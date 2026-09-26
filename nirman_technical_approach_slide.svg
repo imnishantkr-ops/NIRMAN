@@ -1,0 +1,339 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" style="background:#ffffff; font-family:'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#FFA84A"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1F3A"/>
+      <stop offset="100%" stop-color="#1B3B6F"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0B1F3A" flood-opacity="0.06"/>
+    </filter>
+    <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0B1F3A" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <!-- ════════════ TOP HEADER BAR ════════════ -->
+  <!-- Team / Project Oval Pill -->
+  <g id="TeamPill" transform="translate(60, 40)">
+    <rect x="0" y="0" width="220" height="74" rx="37" fill="#ffffff" stroke="#6C5CE7" stroke-width="3"/>
+    <text x="110" y="47" font-size="28" font-weight="800" fill="#1E293B" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif">NIRMAN</text>
+  </g>
+
+  <!-- Slide Title -->
+  <text x="960" y="92" font-size="52" font-weight="900" fill="#111827" text-anchor="middle" letter-spacing="4" font-family="'Times New Roman', 'Playfair Display', serif">TECHNICAL APPROACH</text>
+
+  <!-- SIH 2026 Logo (Vector Reproduction) -->
+  <g id="SIHLogo" transform="translate(1560, 20)">
+    <!-- Brain / Circuit Icon -->
+    <g transform="translate(0, 0)">
+      <!-- Left hemisphere (Orange/Gear) -->
+      <path d="M48,22 C32,22 20,34 20,50 C20,58 24,66 30,71 C26,76 24,82 24,88 C24,96 28,103 35,107 C34,111 34,115 36,118 C38,124 44,128 50,128 C50,128 50,22 48,22 Z" fill="#E67E22"/>
+      <circle cx="36" cy="48" r="4" fill="#ffffff"/>
+      <circle cx="32" cy="78" r="4" fill="#ffffff"/>
+      <circle cx="42" cy="102" r="4" fill="#ffffff"/>
+      <line x1="36" y1="48" x2="48" y2="48" stroke="#ffffff" stroke-width="2.5"/>
+      <line x1="32" y1="78" x2="48" y2="78" stroke="#ffffff" stroke-width="2.5"/>
+      <line x1="42" y1="102" x2="48" y2="102" stroke="#ffffff" stroke-width="2.5"/>
+
+      <!-- Right hemisphere (Green/Digital) -->
+      <path d="M52,22 C68,22 80,34 80,50 C80,58 76,66 70,71 C74,76 76,82 76,88 C76,96 72,103 65,107 C66,111 66,115 64,118 C62,124 56,128 50,128 C50,128 50,22 52,22 Z" fill="#27AE60"/>
+      <!-- Binary text in circuit -->
+      <text x="56" y="46" font-size="9" font-family="monospace" font-weight="700" fill="#ffffff">1010</text>
+      <text x="56" y="62" font-size="9" font-family="monospace" font-weight="700" fill="#ffffff">0101</text>
+      <text x="56" y="78" font-size="9" font-family="monospace" font-weight="700" fill="#ffffff">1100</text>
+      <text x="56" y="94" font-size="9" font-family="monospace" font-weight="700" fill="#ffffff">0011</text>
+      <text x="56" y="110" font-size="9" font-family="monospace" font-weight="700" fill="#ffffff">1010</text>
+
+      <!-- Center Lamp / Ashoka Motif -->
+      <polygon points="50,132 40,140 60,140" fill="#34495E"/>
+      <text x="50" y="152" font-size="13" font-weight="900" fill="#1B3B6F" text-anchor="middle">SIH</text>
+      <rect x="36" y="156" width="28" height="3" fill="#E67E22"/>
+      <rect x="36" y="159" width="28" height="3" fill="#ffffff" stroke="#CBD5E1" stroke-width="0.5"/>
+      <rect x="36" y="162" width="28" height="3" fill="#27AE60"/>
+    </g>
+
+    <!-- Hackathon Text -->
+    <text x="96" y="58" font-size="22" font-weight="800" fill="#1E3A5F" letter-spacing="1.5">SMART INDIA</text>
+    <text x="96" y="82" font-size="21" font-weight="800" fill="#1E3A5F" letter-spacing="1.5">HACKATHON</text>
+    <text x="96" y="118" font-size="34" font-weight="900" fill="#1E3A5F" letter-spacing="1">2026</text>
+  </g>
+
+  <!-- ════════════ SECTION 1: 8-STAGE WORKFLOW PIPELINE ════════════ -->
+  <g id="WorkflowContainer" transform="translate(60, 140)">
+    <!-- Outer Card Container -->
+    <rect x="0" y="0" width="1800" height="310" rx="20" fill="#FFFFFF" stroke="#0984E3" stroke-width="2.5" filter="url(#cardShadow)"/>
+
+    <!-- Left 8 Pipeline Cards Area -->
+    <!-- ROW 1 (Steps 1 - 4) -->
+    <!-- Step 1 -->
+    <g transform="translate(30, 24)">
+      <rect x="0" y="0" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#6C5CE7" stroke-width="2"/>
+      <!-- Icon Badge -->
+      <rect x="135" y="10" width="40" height="26" rx="6" fill="#EDE9FE"/>
+      <text x="155" y="28" font-size="15" font-weight="800" fill="#6C5CE7" text-anchor="middle">📋</text>
+      <!-- Title -->
+      <text x="155" y="58" font-size="16" font-weight="800" fill="#1E293B" text-anchor="middle">1. Outcome Problem Spec</text>
+      <!-- Subtitle -->
+      <text x="155" y="82" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">Govt departments define KPI targets</text>
+      <text x="155" y="100" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">&amp; escrow budget instead of specs.</text>
+    </g>
+
+    <!-- Arrow 1 -> 2 -->
+    <path d="M352,84 L378,84 M372,78 L378,84 L372,90" stroke="#0984E3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Step 2 -->
+    <g transform="translate(390, 24)">
+      <rect x="0" y="0" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.8"/>
+      <rect x="135" y="10" width="40" height="26" rx="6" fill="#F1F5F9"/>
+      <text x="155" y="28" font-size="15" font-weight="800" fill="#475569" text-anchor="middle">⚖️</text>
+      <text x="155" y="58" font-size="16" font-weight="800" fill="#1E293B" text-anchor="middle">2. GFR 161(iv) Compliance</text>
+      <text x="155" y="82" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">Automated legal engine waives</text>
+      <text x="155" y="100" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">prior turnover &amp; 3-yr track record.</text>
+    </g>
+
+    <!-- Arrow 2 -> 3 -->
+    <path d="M712,84 L738,84 M732,78 L738,84 L732,90" stroke="#0984E3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Step 3 -->
+    <g transform="translate(750, 24)">
+      <rect x="0" y="0" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#00B894" stroke-width="2"/>
+      <rect x="135" y="10" width="40" height="26" rx="6" fill="#E6FFFA"/>
+      <text x="155" y="28" font-size="15" font-weight="800" fill="#00B894" text-anchor="middle">🔒</text>
+      <text x="155" y="58" font-size="16" font-weight="800" fill="#1E293B" text-anchor="middle">3. Milestone Escrow Lock</text>
+      <text x="155" y="82" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">Department locks pilot tranches</text>
+      <text x="155" y="100" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">(e.g. ₹18L) in bank escrow account.</text>
+    </g>
+
+    <!-- Arrow 3 -> 4 -->
+    <path d="M1072,84 L1098,84 M1092,78 L1098,84 L1092,90" stroke="#0984E3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Step 4 -->
+    <g transform="translate(1110, 24)">
+      <rect x="0" y="0" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#D63031" stroke-width="2"/>
+      <rect x="135" y="10" width="40" height="26" rx="6" fill="#FFEAA7"/>
+      <text x="155" y="28" font-size="15" font-weight="800" fill="#D63031" text-anchor="middle">⚡</text>
+      <text x="155" y="58" font-size="16" font-weight="800" fill="#1E293B" text-anchor="middle">4. Blind Jury Evaluation</text>
+      <text x="155" y="82" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">Multi-expert scoring (Feasibility,</text>
+      <text x="155" y="100" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">Security, Scalability) with zero bias.</text>
+    </g>
+
+    <!-- ROW 2 (Steps 5 - 8) -->
+    <!-- Step 5 -->
+    <g transform="translate(30, 162)">
+      <rect x="0" y="0" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.8"/>
+      <rect x="135" y="10" width="40" height="26" rx="6" fill="#F1F5F9"/>
+      <text x="155" y="28" font-size="15" font-weight="800" fill="#475569" text-anchor="middle">📡</text>
+      <text x="155" y="58" font-size="16" font-weight="800" fill="#1E293B" text-anchor="middle">5. Live IoT Telemetry Feed</text>
+      <text x="155" y="82" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">Field sensors transmit 15-min telemetry</text>
+      <text x="155" y="100" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">directly into sandbox dashboard.</text>
+    </g>
+
+    <!-- Arrow 5 -> 6 -->
+    <path d="M352,222 L378,222 M372,216 L378,222 L372,228" stroke="#0984E3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Step 6 -->
+    <g transform="translate(390, 162)">
+      <rect x="0" y="0" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#0984E3" stroke-width="2"/>
+      <rect x="135" y="10" width="40" height="26" rx="6" fill="#E1F0FF"/>
+      <text x="155" y="28" font-size="15" font-weight="800" fill="#0984E3" text-anchor="middle">🔬</text>
+      <text x="155" y="58" font-size="16" font-weight="800" fill="#1E293B" text-anchor="middle">6. STQC / IIT Lab Audit</text>
+      <text x="155" y="82" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">Independent 3rd-party audit validates</text>
+      <text x="155" y="100" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">raw telemetry logs &amp; physical calibration.</text>
+    </g>
+
+    <!-- Arrow 6 -> 7 -->
+    <path d="M712,222 L738,222 M732,216 L738,222 L732,228" stroke="#0984E3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Step 7 -->
+    <g transform="translate(750, 162)">
+      <rect x="0" y="0" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#00B894" stroke-width="2"/>
+      <rect x="135" y="10" width="40" height="26" rx="6" fill="#E6FFFA"/>
+      <text x="155" y="28" font-size="15" font-weight="800" fill="#00B894" text-anchor="middle">💸</text>
+      <text x="155" y="58" font-size="16" font-weight="800" fill="#1E293B" text-anchor="middle">7. Smart Escrow Release</text>
+      <text x="155" y="82" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">Milestone funds disburse to startup</text>
+      <text x="155" y="100" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">immediately upon verified audit approval.</text>
+    </g>
+
+    <!-- Arrow 7 -> 8 -->
+    <path d="M1072,222 L1098,222 M1092,216 L1098,222 L1092,228" stroke="#0984E3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Step 8 -->
+    <g transform="translate(1110, 162)">
+      <rect x="0" y="0" width="310" height="120" rx="14" fill="#FFFFFF" stroke="#0984E3" stroke-width="2"/>
+      <rect x="135" y="10" width="40" height="26" rx="6" fill="#E1F0FF"/>
+      <text x="155" y="28" font-size="15" font-weight="800" fill="#0984E3" text-anchor="middle">🏆</text>
+      <text x="155" y="58" font-size="16" font-weight="800" fill="#1E293B" text-anchor="middle">8. National GeM Passport</text>
+      <text x="155" y="82" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">1 successful pilot earns reusable</text>
+      <text x="155" y="100" font-size="12" font-weight="500" fill="#64748B" text-anchor="middle">credential for pan-India direct scale-up.</text>
+    </g>
+
+    <!-- Vertical Divider -->
+    <line x1="1455" y1="20" x2="1455" y2="290" stroke="#0984E3" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Right Side: PRODUCT STATUS Panel -->
+    <g transform="translate(1480, 24)">
+      <text x="0" y="24" font-size="17" font-weight="900" fill="#1B3B6F" letter-spacing="1">PRODUCT STATUS :</text>
+      <text x="0" y="56" font-size="14" font-style="italic" font-weight="700" fill="#0984E3">90% product build completed and further</text>
+      <text x="0" y="76" font-size="14" font-style="italic" font-weight="700" fill="#0984E3">pilot integration is in active progress.</text>
+
+      <text x="0" y="112" font-size="13" font-style="italic" fill="#334155">Working interactive sandbox engine,</text>
+      <text x="0" y="132" font-size="13" font-style="italic" fill="#334155">GFR 161(iv) Problem Doctor,</text>
+      <text x="0" y="152" font-size="13" font-style="italic" fill="#334155">live telemetry simulator, and</text>
+      <text x="0" y="172" font-size="13" font-style="italic" fill="#334155">GeM Passport issuer are fully functional.</text>
+
+      <text x="0" y="215" font-size="13" font-weight="800" fill="#1E293B">Next: <tspan font-weight="500" fill="#475569">Ground telemetry test with</tspan></text>
+      <text x="0" y="235" font-size="13" font-weight="500" fill="#475569">UP Rural Health PHC cold-chain &amp;</text>
+      <text x="0" y="255" font-size="13" font-weight="500" fill="#475569">GeM API pilot gateway integration.</text>
+    </g>
+  </g>
+
+  <!-- ════════════ SECTION 2: 3 TECH STACK COLUMNS ════════════ -->
+  <!-- Column 1: Frontend Development -->
+  <g id="ColFrontend" transform="translate(60, 480)">
+    <rect x="0" y="0" width="575" height="520" rx="20" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8" filter="url(#cardShadow)"/>
+    <!-- Header with Icon -->
+    <text x="36" y="52" font-size="22" font-weight="800" fill="#0984E3">🖥️ Frontend Development</text>
+
+    <!-- Bullet 1 -->
+    <circle cx="44" cy="98" r="4.5" fill="#334155"/>
+    <text x="60" y="103" font-size="15" font-weight="700" fill="#1E293B">HTML5 / Vanilla JS (ES6+): <tspan font-weight="400" fill="#475569">Ultra-fast, zero-overhead</tspan></text>
+    <text x="60" y="125" font-size="14.5" font-weight="400" fill="#475569">execution with zero framework bloat &amp; &lt;1.2s page loads.</text>
+
+    <!-- Bullet 2 -->
+    <circle cx="44" cy="168" r="4.5" fill="#334155"/>
+    <text x="60" y="173" font-size="15" font-weight="700" fill="#1E293B">Master CSS Grid &amp; Clamping: <tspan font-weight="400" fill="#475569">One single responsive</tspan></text>
+    <text x="60" y="195" font-size="14.5" font-weight="400" fill="#475569">adaptive system with touch targets &gt;= 44px on all screens.</text>
+
+    <!-- Bullet 3 -->
+    <circle cx="44" cy="238" r="4.5" fill="#334155"/>
+    <text x="60" y="243" font-size="15" font-weight="700" fill="#1E293B">Real-time Telemetry Visualizer: <tspan font-weight="400" fill="#475569">SVG dynamic charts</tspan></text>
+    <text x="60" y="265" font-size="14.5" font-weight="400" fill="#475569">streaming 15-min sensor logs &amp; milestone escrow gates.</text>
+
+    <!-- Bullet 4 -->
+    <circle cx="44" cy="308" r="4.5" fill="#334155"/>
+    <text x="60" y="313" font-size="15" font-weight="700" fill="#1E293B">Offline Session Engine: <tspan font-weight="400" fill="#475569">Persistent client state with</tspan></text>
+    <text x="60" y="335" font-size="14.5" font-weight="400" fill="#475569">instant role switching (Dept / Startup / Validator).</text>
+
+    <!-- Divider -->
+    <line x1="30" y1="440" x2="545" y2="440" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+    <!-- Tech Badges -->
+    <g transform="translate(30, 460)">
+      <rect x="0" y="0" width="70" height="34" rx="8" fill="#FFF5F0" stroke="#FF6B35" stroke-width="1.2"/>
+      <text x="35" y="22" font-size="13" font-weight="800" fill="#FF6B35" text-anchor="middle">HTML5</text>
+
+      <rect x="82" y="0" width="65" height="34" rx="8" fill="#F0F7FF" stroke="#0984E3" stroke-width="1.2"/>
+      <text x="114" y="22" font-size="13" font-weight="800" fill="#0984E3" text-anchor="middle">CSS3</text>
+
+      <rect x="159" y="0" width="55" height="34" rx="8" fill="#FEFCE8" stroke="#CA8A04" stroke-width="1.2"/>
+      <text x="186" y="22" font-size="13" font-weight="800" fill="#CA8A04" text-anchor="middle">JS</text>
+
+      <rect x="226" y="0" width="105" height="34" rx="8" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.2"/>
+      <text x="278" y="22" font-size="13" font-weight="800" fill="#0D9488" text-anchor="middle">SVG Canvas</text>
+
+      <rect x="343" y="0" width="100" height="34" rx="8" fill="#F8FAFC" stroke="#64748B" stroke-width="1.2"/>
+      <text x="393" y="22" font-size="13" font-weight="800" fill="#64748B" text-anchor="middle">LocalStorage</text>
+    </g>
+  </g>
+
+  <!-- Column 2: Backend Development -->
+  <g id="ColBackend" transform="translate(672, 480)">
+    <rect x="0" y="0" width="575" height="520" rx="20" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8" filter="url(#cardShadow)"/>
+    <text x="36" y="52" font-size="22" font-weight="800" fill="#D97706">⚙️ Backend Development</text>
+
+    <!-- Bullet 1 -->
+    <circle cx="44" cy="98" r="4.5" fill="#334155"/>
+    <text x="60" y="103" font-size="15" font-weight="700" fill="#1E293B">Python FastAPI / Node.js: <tspan font-weight="400" fill="#475569">High-concurrency async</tspan></text>
+    <text x="60" y="125" font-size="14.5" font-weight="400" fill="#475569">endpoints for challenge broadcasting &amp; bid processing.</text>
+
+    <!-- Bullet 2 -->
+    <circle cx="44" cy="168" r="4.5" fill="#334155"/>
+    <text x="60" y="173" font-size="15" font-weight="700" fill="#1E293B">SBI Milestone Escrow Engine: <tspan font-weight="400" fill="#475569">Smart release contract</tspan></text>
+    <text x="60" y="195" font-size="14.5" font-weight="400" fill="#475569">simulating tranches locked &amp; disbursed via digital escrow.</text>
+
+    <!-- Bullet 3 -->
+    <circle cx="44" cy="238" r="4.5" fill="#334155"/>
+    <text x="60" y="243" font-size="15" font-weight="700" fill="#1E293B">GFR Rule 161(iv) Validator: <tspan font-weight="400" fill="#475569">Automated rules parser</tspan></text>
+    <text x="60" y="265" font-size="14.5" font-weight="400" fill="#475569">flagging illegal prior-experience / turnover clauses.</text>
+
+    <!-- Bullet 4 -->
+    <circle cx="44" cy="308" r="4.5" fill="#334155"/>
+    <text x="60" y="313" font-size="15" font-weight="700" fill="#1E293B">PostgreSQL &amp; Redis: <tspan font-weight="400" fill="#475569">Relational audit trail for jury</tspan></text>
+    <text x="60" y="335" font-size="14.5" font-weight="400" fill="#475569">score normalization with Redis caching for instant queries.</text>
+
+    <!-- Divider -->
+    <line x1="30" y1="440" x2="545" y2="440" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+    <!-- Tech Badges -->
+    <g transform="translate(30, 460)">
+      <rect x="0" y="0" width="75" height="34" rx="8" fill="#F0FDF4" stroke="#16A34A" stroke-width="1.2"/>
+      <text x="37" y="22" font-size="13" font-weight="800" fill="#16A34A" text-anchor="middle">Node.js</text>
+
+      <rect x="87" y="0" width="115" height="34" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.2"/>
+      <text x="144" y="22" font-size="13" font-weight="800" fill="#2563EB" text-anchor="middle">Python FastAPI</text>
+
+      <rect x="214" y="0" width="100" height="34" rx="8" fill="#F0F9FF" stroke="#0284C7" stroke-width="1.2"/>
+      <text x="264" y="22" font-size="13" font-weight="800" fill="#0284C7" text-anchor="middle">PostgreSQL</text>
+
+      <rect x="326" y="0" width="60" height="34" rx="8" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.2"/>
+      <text x="356" y="22" font-size="13" font-weight="800" fill="#DC2626" text-anchor="middle">Redis</text>
+
+      <rect x="398" y="0" width="95" height="34" rx="8" fill="#F8FAFC" stroke="#475569" stroke-width="1.2"/>
+      <text x="445" y="22" font-size="13" font-weight="800" fill="#475569" text-anchor="middle">Escrow API</text>
+    </g>
+  </g>
+
+  <!-- Column 3: Trust & Security Infrastructure -->
+  <g id="ColTrust" transform="translate(1285, 480)">
+    <rect x="0" y="0" width="575" height="520" rx="20" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8" filter="url(#cardShadow)"/>
+    <text x="36" y="52" font-size="22" font-weight="800" fill="#7C3AED">🔒 GovTech, Security &amp; Trust</text>
+
+    <!-- Bullet 1 -->
+    <circle cx="44" cy="98" r="4.5" fill="#334155"/>
+    <text x="60" y="103" font-size="15" font-weight="700" fill="#1E293B">SHA-256 Telemetry Hashing: <tspan font-weight="400" fill="#475569">Tamper-proof hash logs</tspan></text>
+    <text x="60" y="125" font-size="14.5" font-weight="400" fill="#475569">binding raw IoT sensor stream to validator audit records.</text>
+
+    <!-- Bullet 2 -->
+    <circle cx="44" cy="168" r="4.5" fill="#334155"/>
+    <text x="60" y="173" font-size="15" font-weight="700" fill="#1E293B">STQC &amp; IIT Verification Protocol: <tspan font-weight="400" fill="#475569">Independent</tspan></text>
+    <text x="60" y="195" font-size="14.5" font-weight="400" fill="#475569">third-party test certs adhering to MeitY STQC standards.</text>
+
+    <!-- Bullet 3 -->
+    <circle cx="44" cy="238" r="4.5" fill="#334155"/>
+    <text x="60" y="243" font-size="15" font-weight="700" fill="#1E293B">DPIIT &amp; Startup India Integration: <tspan font-weight="400" fill="#475569">Direct entity</tspan></text>
+    <text x="60" y="265" font-size="14.5" font-weight="400" fill="#475569">lookup verifying DIPP certificate and founder credentials.</text>
+
+    <!-- Bullet 4 -->
+    <circle cx="44" cy="308" r="4.5" fill="#334155"/>
+    <text x="60" y="313" font-size="15" font-weight="700" fill="#1E293B">GeM National Passport Generator: <tspan font-weight="400" fill="#475569">Verifiable QR</tspan></text>
+    <text x="60" y="335" font-size="14.5" font-weight="400" fill="#475569">credentials for fast-track L1 procurement exemption.</text>
+
+    <!-- Divider -->
+    <line x1="30" y1="440" x2="545" y2="440" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6,6"/>
+
+    <!-- Tech Badges -->
+    <g transform="translate(30, 460)">
+      <rect x="0" y="0" width="85" height="34" rx="8" fill="#FDF4FF" stroke="#A855F7" stroke-width="1.2"/>
+      <text x="42" y="22" font-size="13" font-weight="800" fill="#A855F7" text-anchor="middle">SHA-256</text>
+
+      <rect x="97" y="0" width="85" height="34" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.2"/>
+      <text x="139" y="22" font-size="13" font-weight="800" fill="#7C3AED" text-anchor="middle">STQC Lab</text>
+
+      <rect x="194" y="0" width="85" height="34" rx="8" fill="#EFF6FF" stroke="#3B82F6" stroke-width="1.2"/>
+      <text x="236" y="22" font-size="13" font-weight="800" fill="#3B82F6" text-anchor="middle">DPIIT API</text>
+
+      <rect x="291" y="0" width="95" height="34" rx="8" fill="#F0FDF4" stroke="#10B981" stroke-width="1.2"/>
+      <text x="338" y="22" font-size="13" font-weight="800" fill="#10B981" text-anchor="middle">DigiLocker</text>
+
+      <rect x="398" y="0" width="105" height="34" rx="8" fill="#F8FAFC" stroke="#334155" stroke-width="1.2"/>
+      <text x="450" y="22" font-size="13" font-weight="800" fill="#334155" text-anchor="middle">GeM Gateway</text>
+    </g>
+  </g>
+
+  <!-- ════════════ BOTTOM ACCENT BAR ════════════ -->
+  <rect x="0" y="1044" width="1920" height="36" fill="#0984E3"/>
+</svg>
