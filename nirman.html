@@ -1899,10 +1899,6 @@
         <button data-v="scaleup" id="tab-scaleup">Marketplace</button>
       </nav>
 
-      <div id="unauthNavMsg" style="display:none;align-items:center;gap:6px;font-size:12px;color:#A3B5D0;padding:5px 14px;background:rgba(255,255,255,.06);border-radius:999px;border:1px solid rgba(255,255,255,.12);cursor:pointer;" onclick="openLoginModal()">
-        <span>🔒 Sign in to access Home, Discovery, Passport &amp; Marketplace</span>
-      </div>
-
       <div class="nav-actions">
         <button class="theme-btn" id="themeToggle" title="Toggle theme">☀️</button>
         <button class="btn btn-primary btn-sm" id="loginBtn" onclick="openLoginModal()">Sign In 🔑</button>
@@ -2422,14 +2418,22 @@
         <div class="panel">
           <div id="studioStep1">
             <h3 style="font-size:18px;margin-bottom:6px;">Step 1: Describe Departmental Operational Problem</h3>
-            <p style="font-size:13px;color:var(--slate);margin-bottom:18px;">Paste current departmental tender draft or operational pain point.</p>
+            <p style="font-size:13px;color:var(--slate);margin-bottom:18px;">Select sponsoring department and describe the operational challenge or legacy tender specification.</p>
             <div class="field">
-              <label>Sponsoring Department</label>
-              <input type="text" id="studioDept" value="Department of Rural Health, Uttar Pradesh">
+              <label>Sponsoring Department / Ministry</label>
+              <select id="studioDept">
+                <option value="" disabled selected>Select Sponsoring Department / Ministry</option>
+                <option value="Department of Rural Health, Uttar Pradesh">Department of Rural Health, Uttar Pradesh</option>
+                <option value="Ministry of Jal Shakti">Ministry of Jal Shakti</option>
+                <option value="Smart Cities Mission, MoHUA">Smart Cities Mission, MoHUA</option>
+                <option value="Punjab Agriculture Department">Punjab Agriculture Department</option>
+                <option value="Nagpur Municipal Corporation">Nagpur Municipal Corporation</option>
+                <option value="Central Ground Water Authority">Central Ground Water Authority</option>
+              </select>
             </div>
             <div class="field">
-              <label>Draft Problem Description (Traditional Spec)</label>
-              <textarea rows="4" id="studioDraftText">Cold-chain vaccine wastage in block-level Primary Health Centres (PHCs) is averaging 18%. Department requires bidders to have 5 years government experience and ₹2.5 Crore annual audited turnover to supply temperature sensors.</textarea>
+              <label>Draft Problem Description (Traditional Spec or Pain Point)</label>
+              <textarea rows="4" id="studioDraftText" placeholder="Describe the operational challenge, departmental pain point, or legacy tender specification you want to reformulate into an outcome challenge..."></textarea>
             </div>
             <div style="display:flex;justify-content:flex-end;">
               <button class="btn btn-primary" onclick="setStudioStep(2)">Send to Problem Statement Doctor →</button>
@@ -2446,8 +2450,8 @@
             </div>
             <div style="background:var(--emerald-light);border:1px solid rgba(15,169,104,.3);border-radius:12px;padding:16px;margin-bottom:20px;">
               <div style="font-weight:700;color:var(--emerald);font-size:13.5px;">✨ Outcome-Based Reformulated Challenge:</div>
-              <div style="font-size:13px;color:var(--ink);margin-top:6px;font-weight:500;">
-                "Deploy IoT telemetry to reduce cold-chain vaccine wastage below 5% across 12 PHCs during a paid 6-week sandbox pilot. DPIIT recognized startups fully eligible with zero turnover requirements."
+              <div style="font-size:13px;color:var(--ink);margin-top:6px;font-weight:500;" id="doctorOutcomeText">
+                "Deploy outcome-driven innovation to solve operational challenge across field sites during a paid sandbox pilot. DPIIT recognized startups fully eligible with zero turnover requirements under GFR Rule 161(iv)."
               </div>
             </div>
             <div style="display:flex;justify-content:space-between;">
@@ -2461,15 +2465,16 @@
             <p style="font-size:13px;color:var(--slate);margin-bottom:18px;">Set the quantitative criteria for pilot payment releases.</p>
             <div class="field">
               <label>Target Success Outcome KPI</label>
-              <input type="text" id="studioKpi" value="Wastage rate &lt; 5% verified via live 15-minute telemetry across 12 PHCs">
+              <input type="text" id="studioKpi" placeholder="e.g. Wastage rate &lt; 5% verified via live 15-minute telemetry across 12 PHCs" value="">
             </div>
             <div class="field">
               <label>Total Milestone Escrow Allocation (₹)</label>
-              <input type="text" id="studioBudget" value="₹18,00,000">
+              <input type="text" id="studioBudget" placeholder="e.g. ₹18,00,000" value="">
             </div>
             <div class="field">
               <label>Sandbox Risk Classification Tier</label>
               <select id="studioRisk">
+                <option value="" disabled selected>Select Sandbox Risk Tier</option>
                 <option value="Medium">Medium — Field Sandbox with quarterly security review</option>
                 <option value="Low">Low — Public data simulation sandbox</option>
                 <option value="High">High — Rigorous STQC independent audit required</option>
@@ -2485,11 +2490,12 @@
             <h3 style="font-size:18px;margin-bottom:6px;">Step 4: Standard Template 1 — Problem Statement Specification</h3>
             <p style="font-size:13px;color:var(--slate);margin-bottom:18px;">Review the finalized public sandbox challenge template before broadcasting to DPIIT startups.</p>
             <div style="background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:20px;font-size:13px;display:flex;flex-direction:column;gap:8px;">
-              <div><b>Challenge Title:</b> Cold-Chain Vaccine Wastage Reduction Sandbox</div>
-              <div><b>Sponsoring Department:</b> Dept. of Rural Health, UP</div>
+              <div><b>Challenge Title:</b> <span id="revChallengeTitle">Outcome-Based Operational Sandbox Challenge</span></div>
+              <div><b>Sponsoring Department:</b> <span id="revDept">Dept. of Rural Health, UP</span></div>
               <div><b>GFR Exemption Status:</b> <span class="badge-tag ok">GFR 161(iv) Turnover Waived</span></div>
-              <div><b>Milestone Escrow:</b> ₹18,00,000 (Locked in SBI Escrow Account)</div>
-              <div><b>Target Outcome:</b> &lt;5% wastage over 6-week sandbox pilot</div>
+              <div><b>Milestone Escrow:</b> <span id="revBudget">₹18,00,000</span> (Locked in SBI Escrow Account)</div>
+              <div><b>Target Outcome:</b> <span id="revKpi">&lt;5% wastage over 6-week sandbox pilot</span></div>
+              <div><b>Risk Classification:</b> <span id="revRisk">Medium Risk Sandbox</span></div>
             </div>
             <div style="display:flex;justify-content:space-between;">
               <button class="btn btn-outline" onclick="setStudioStep(3)">← Back</button>
@@ -2631,8 +2637,17 @@
           </div>
 
           <div class="panel">
-            <h3 style="font-size:18px;margin-bottom:4px;">Score Active Applicant: <span style="color:var(--saffron);">AarambhX</span></h3>
-            <p style="font-size:12.5px;color:var(--slate);margin-bottom:16px;">Evaluator: Dr. R. Menon (Empanelled Health Systems Specialist)</p>
+            <h3 style="font-size:18px;margin-bottom:4px;">Score Active Applicant: <span style="color:var(--saffron);" id="lblActiveApplicant">AarambhX Technologies</span></h3>
+            <p style="font-size:12.5px;color:var(--slate);margin-bottom:12px;">Evaluator: Dr. R. Menon (Empanelled Health Systems Specialist)</p>
+
+            <div class="field">
+              <label>Select Applicant Entity to Evaluate</label>
+              <select id="evalApplicantSelect" onchange="document.getElementById('lblActiveApplicant').textContent = this.options[this.selectedIndex].text.split('(')[0].trim()">
+                <option value="AarambhX" selected>AarambhX Technologies (DIPP98412)</option>
+                <option value="MedLogix">MedLogix Systems (DIPP41290)</option>
+                <option value="VaxTrack">VaxTrack India (DIPP65812)</option>
+              </select>
+            </div>
 
             <div class="field">
               <label>Feasibility Score (0 - 10): <b id="lblFeas">9.0</b></label>
@@ -2857,19 +2872,25 @@
       <div class="panel" style="max-width:760px;margin:0 auto;">
         <h3 style="font-size:18px;margin-bottom:14px;">Validator Sign-Off Form (Template 9)</h3>
         <div class="field">
-          <label>Assigned Validator</label>
-          <input type="text" value="Prof. Dr. Meenakshi Sundaram — IIT Delhi &amp; STQC Audit Cell" readonly>
+          <label>Assigned Validator / Accredited Agency</label>
+          <select id="valSignOffAgency">
+            <option value="" disabled selected>Select accredited agency / auditor</option>
+            <option value="Prof. Dr. Meenakshi Sundaram — IIT Delhi &amp; STQC Audit Cell">Prof. Dr. Meenakshi Sundaram — IIT Delhi &amp; STQC Audit Cell</option>
+            <option value="Dr. Rajesh Nair — IIT Bombay Innovation Center">Dr. Rajesh Nair — IIT Bombay Innovation Center</option>
+            <option value="Dr. Ananya Roy — IISc Bangalore Telemetry Lab">Dr. Ananya Roy — IISc Bangalore Telemetry Lab</option>
+            <option value="Standardisation Testing &amp; Quality Certification (STQC) Directorate">STQC Directorate Official Auditor</option>
+          </select>
         </div>
         <div class="field">
-          <label>Evidence Audited</label>
-          <textarea rows="3" readonly>1. Raw GSM telemetry log (14,400 data points across 12 PHCs).
-2. Physical calibration cross-checks verified on-site.
-3. Zero spoilage confirmation signed by Block Medical Officers.</textarea>
+          <label>Evidence Audited &amp; Verification Observations</label>
+          <textarea rows="3" id="valEvidenceNotes" placeholder="Enter audited telemetry dataset logs, physical calibration cross-checks, and block officer sign-offs..."></textarea>
         </div>
         <div class="field">
           <label>Formal Recommendation</label>
-          <select style="font-weight:700;color:var(--emerald);">
-            <option>RECOMMEND FOR FULL DISTRICT PROCUREMENT &amp; NATIONAL PASSPORT</option>
+          <select id="valRecommendation" style="font-weight:700;color:var(--emerald);">
+            <option value="RECOMMEND">RECOMMEND FOR FULL DISTRICT PROCUREMENT &amp; NATIONAL PASSPORT</option>
+            <option value="CONDITIONAL">RECOMMEND EXTENSION WITH RE-CALIBRATION AUDIT</option>
+            <option value="REJECT">REJECT CLAIM — ESCROW REFUND TO DEPARTMENT</option>
           </select>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);">
@@ -2895,18 +2916,25 @@
         <h3 style="font-size:18px;margin-bottom:14px;">Administrative Scale-Up Order</h3>
         <div class="field">
           <label>Recorded Procurement Pathway</label>
-          <select style="font-weight:700;color:var(--navy-3);">
-            <option>1. Direct District-Wide Scale-Up (Expand to 75 Districts under GeM L1 Exemption)</option>
-            <option>2. National GeM Category Creation</option>
+          <select id="decisionPathway" style="font-weight:700;color:var(--navy-3);">
+            <option value="Direct District-Wide Scale-Up">1. Direct District-Wide Scale-Up (Expand to 75 Districts under GeM L1 Exemption)</option>
+            <option value="National GeM Category Creation">2. National GeM Category Creation &amp; Ministry Empanelment</option>
+            <option value="Interstate Sandbox Fast-Track">3. Interstate Sandbox Fast-Track Adoption (GFR 161(iv))</option>
           </select>
         </div>
         <div class="field">
-          <label>Approving Officer</label>
-          <input type="text" value="Dr. Rajesh Verma, IAS — Principal Secretary, Health &amp; Family Welfare">
+          <label>Approving Officer (IAS / Competent Authority)</label>
+          <select id="decisionOfficerSelect">
+            <option value="" disabled selected>Select Approving Authority</option>
+            <option value="Dr. Rajesh Verma, IAS — Principal Secretary, Health &amp; Family Welfare">Dr. Rajesh Verma, IAS — Principal Secretary, Health &amp; Family Welfare</option>
+            <option value="Shri S. K. Gupta, IAS — Mission Director, Smart Cities">Shri S. K. Gupta, IAS — Mission Director, Smart Cities</option>
+            <option value="Ms. Vandana Sharma, IAS — Secretary, Rural Development">Ms. Vandana Sharma, IAS — Secretary, Rural Development</option>
+            <option value="Dr. Alok Ranjan — Director General, Medical Supplies">Dr. Alok Ranjan — Director General, Medical Supplies</option>
+          </select>
         </div>
         <div class="field">
           <label>Justification &amp; Fiscal Allocation</label>
-          <textarea rows="3">Based on verified 79.3% reduction in vaccine spoilage and clean STQC independent validation, administrative sanction is accorded to procure 1,200 additional units across 75 districts for ₹4.8 Crore.</textarea>
+          <textarea rows="3" id="decisionJustification" placeholder="Enter administrative sanction justification, verified reduction metrics, unit count, and fiscal sanction allocation (e.g. ₹4.8 Crore for 1,200 units)..."></textarea>
         </div>
         <div style="display:flex;justify-content:flex-end;margin-top:20px;">
           <button class="btn btn-primary" onclick="showToast('🎉 Scale-Up Procurement Order signed!', 'success'); go('passport');">✍️ Formally Sign &amp; Issue Passport</button>
@@ -3042,34 +3070,44 @@
             <div class="field">
               <label>Department / Mission</label>
               <select id="deptSelect">
+                <option value="" disabled selected>Select your Department / Ministry</option>
                 <option value="Dept. of Rural Health, UP">Dept. of Rural Health, UP</option>
                 <option value="Smart Cities Mission">Smart Cities Mission</option>
                 <option value="Punjab Agriculture Dept.">Punjab Agriculture Dept.</option>
+                <option value="Ministry of Jal Shakti">Ministry of Jal Shakti</option>
+                <option value="Nagpur Municipal Corporation">Nagpur Municipal Corporation</option>
+                <option value="Central Ground Water Authority">Central Ground Water Authority</option>
               </select>
             </div>
             <div class="field">
-              <label>Official Email ID</label>
-              <input type="email" id="govEmail" value="director.health@up.gov.in">
+              <label>Official Email ID (.gov.in / .nic.in)</label>
+              <input type="email" id="govEmail" placeholder="e.g. director.health@up.gov.in" value="">
             </div>
           </div>
           <div id="fieldsStartup" style="display:none;">
             <div class="field">
-              <label>Startup Name</label>
-              <input type="text" id="startupNameInput" value="AarambhX (DPIIT Recognised)">
+              <label>Startup Entity Name</label>
+              <input type="text" id="startupNameInput" placeholder="e.g. AarambhX Technologies" value="">
             </div>
             <div class="field">
-              <label>Founder Email ID</label>
-              <input type="email" id="startupEmailInput" value="founder@aarambhx.in">
+              <label>Founder / Representative Email ID</label>
+              <input type="email" id="startupEmailInput" placeholder="e.g. founder@startup.in" value="">
             </div>
           </div>
           <div id="fieldsValidator" style="display:none;">
             <div class="field">
-              <label>Validation Institution</label>
-              <input type="text" value="IIT Delhi / STQC Audit Cell" readonly>
+              <label>Validation Institution / Audit Agency</label>
+              <select id="valInstSelect">
+                <option value="" disabled selected>Select accredited agency</option>
+                <option value="IIT Delhi / STQC Audit Cell">IIT Delhi / STQC Audit Cell</option>
+                <option value="IIT Bombay Innovation Center">IIT Bombay Innovation Center</option>
+                <option value="IISc Bangalore Telemetry Lab">IISc Bangalore Telemetry Lab</option>
+                <option value="Standardisation Testing & Quality Certification (STQC)">STQC Directorate</option>
+              </select>
             </div>
             <div class="field">
               <label>Auditor Official Email</label>
-              <input type="email" id="valEmailInput" value="m.sundaram@iitd.ac.in">
+              <input type="email" id="valEmailInput" placeholder="e.g. m.sundaram@iitd.ac.in" value="">
             </div>
           </div>
 
@@ -3077,7 +3115,7 @@
             <button class="btn btn-primary" style="width:100%;" onclick="requestOtpOrLogin()">Send Verification OTP →</button>
             <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--slate);">
               <span>🛡️ GFR 2017 &amp; DigiLocker Aligned</span>
-              <span style="color:var(--saffron);cursor:pointer;font-weight:600;" onclick="quickDemoLogin(activeLoginRole)">Skip OTP (Demo)</span>
+              <span style="color:var(--saffron);cursor:pointer;font-weight:600;" onclick="quickDemoLogin(activeLoginRole)">Demo One-Click Sign In</span>
             </div>
           </div>
         </div>
@@ -3085,12 +3123,12 @@
         <div id="authOtpStep" style="display:none;text-align:center;">
           <div style="font-size:32px;margin-bottom:8px;">📧</div>
           <h4 style="font-size:16px;">Enter 4-Digit Verification Code</h4>
-          <p style="font-size:12.5px;color:var(--slate);margin-bottom:12px;" id="otpTargetText">OTP sent to email.</p>
+          <p style="font-size:12.5px;color:var(--slate);margin-bottom:12px;" id="otpTargetText">Enter verification code sent to your email.</p>
           <div style="display:inline-block;padding:4px 12px;background:var(--saffron-light);color:var(--saffron-dark);font-size:12px;font-weight:700;border-radius:99px;margin-bottom:14px;">
-            Demo Code: <strong>4821</strong>
+            Verification Code: <strong>4821</strong>
           </div>
           <div class="field" style="max-width:200px;margin:0 auto 16px;">
-            <input type="text" id="otpCodeInput" maxlength="4" value="4821" style="text-align:center;font-size:24px;letter-spacing:8px;font-weight:700;">
+            <input type="text" id="otpCodeInput" maxlength="4" placeholder="••••" value="" style="text-align:center;font-size:24px;letter-spacing:8px;font-weight:700;">
           </div>
           <div style="display:flex;gap:10px;">
             <button class="btn btn-outline" style="flex:1;" onclick="backToCreds()">Back</button>
@@ -3116,12 +3154,21 @@
           🛡️ <b>GFR Rule 161(iv) Exemption:</b> No prior turnover or 3-year history required.
         </div>
         <div class="field">
-          <label>Startup Entity Name</label>
-          <input type="text" value="AarambhX (DIPP98412)" readonly>
+          <label>Startup Entity Name (DPIIT ID)</label>
+          <input type="text" id="applyStartupName" placeholder="Enter your DPIIT registered entity name">
         </div>
         <div class="field">
-          <label>Technical Approach</label>
-          <textarea rows="3">Cellular IoT temperature loggers transmitting 15-minute telemetry to department dashboard.</textarea>
+          <label>Select Pilot Scope / Timeline</label>
+          <select id="applyPilotScope">
+            <option value="" disabled selected>Select pilot duration &amp; test sites</option>
+            <option value="6-Week Sandbox Pilot (10–15 Field Sites)">6-Week Sandbox Pilot (10–15 Field Sites)</option>
+            <option value="8-Week Regional Sandbox (15–25 Field Sites)">8-Week Regional Sandbox (15–25 Field Sites)</option>
+            <option value="4-Week Rapid Feasibility Sandbox (5–10 Sites)">4-Week Rapid Feasibility Sandbox (5–10 Sites)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Technical Approach &amp; Deliverables</label>
+          <textarea rows="3" id="applyTechApproach" placeholder="Describe your technical methodology, sensor hardware/software stack, and data delivery protocol..."></textarea>
         </div>
         <div style="display:flex;justify-content:flex-end;gap:10px;">
           <button class="btn btn-outline" onclick="closeApplyModal()">Cancel</button>
@@ -3137,18 +3184,28 @@
       <div class="modal-header">
         <div>
           <h3 style="font-size:18px;">Submit Milestone Telemetry Evidence</h3>
-          <p style="font-size:12.5px;color:var(--slate);">AarambhX · Escrow Release Claim</p>
+          <p style="font-size:12.5px;color:var(--slate);">Milestone Escrow Release Claim</p>
         </div>
         <button class="modal-close" onclick="closeEvidenceModal()">&times;</button>
       </div>
       <div class="modal-body">
         <div class="field">
-          <label>Live Telemetry URL</label>
-          <input type="text" value="https://telemetry.aarambhx.in/v1/phc-up/stream?batch=12" readonly>
+          <label>Select Milestone Deliverable</label>
+          <select id="evidenceMilestoneSelect">
+            <option value="" disabled selected>Select milestone to claim escrow</option>
+            <option value="Milestone 1 — Baseline Calibration & Delivery">Milestone 1 — Baseline Calibration &amp; Delivery</option>
+            <option value="Milestone 2 — Telemetry & Stream Verification">Milestone 2 — Telemetry &amp; Stream Verification</option>
+            <option value="Milestone 3 — Stress Testing & Anomaly Audit">Milestone 3 — Stress Testing &amp; Anomaly Audit</option>
+            <option value="Milestone 4 — Final 6-Week Ground Handover">Milestone 4 — Final 6-Week Ground Handover</option>
+          </select>
         </div>
         <div class="field">
-          <label>Field Verification Summary</label>
-          <textarea rows="3">12 PHCs operational. Temperature maintained within 2°C–8°C. Signed by block medical officers.</textarea>
+          <label>Live Telemetry URL / Verification API Endpoint</label>
+          <input type="text" id="evidenceUrl" placeholder="https://api.yourdomain.com/v1/telemetry/stream">
+        </div>
+        <div class="field">
+          <label>Field Verification Summary &amp; Log Notes</label>
+          <textarea rows="3" id="evidenceNotes" placeholder="Enter sensor logs, field performance metrics, and site officer sign-offs..."></textarea>
         </div>
         <div style="display:flex;justify-content:flex-end;gap:10px;">
           <button class="btn btn-outline" onclick="closeEvidenceModal()">Cancel</button>
@@ -3588,14 +3645,12 @@
       const isValidator = currentUser && currentUser.role === 'validator';
 
       const tabsNav = document.getElementById('tabs');
-      const unauthNavMsg = document.getElementById('unauthNavMsg');
       const loginBtn = document.getElementById('loginBtn');
       const userPill = document.getElementById('userPill');
 
       // Before sign in: REMOVE all navigation options (Home, Discovery, Passport, Marketplace, etc.)
       if (!currentUser) {
         if (tabsNav) tabsNav.style.display = 'none';
-        if (unauthNavMsg) unauthNavMsg.style.display = 'inline-flex';
         if (loginBtn) loginBtn.style.display = 'inline-flex';
         if (userPill) userPill.style.display = 'none';
         return;
@@ -3603,7 +3658,6 @@
 
       // After sign in: Reveal navigation options according to role
       if (tabsNav) tabsNav.style.display = 'flex';
-      if (unauthNavMsg) unauthNavMsg.style.display = 'none';
       if (loginBtn) loginBtn.style.display = 'none';
       if (userPill) userPill.style.display = 'inline-flex';
 
@@ -3673,18 +3727,59 @@
     }
 
     function requestOtpOrLogin() {
+      let targetEmail = '';
+      if (activeLoginRole === 'dept') {
+        const email = document.getElementById('govEmail').value.trim();
+        targetEmail = email || 'official@nic.in';
+      } else if (activeLoginRole === 'startup') {
+        const email = document.getElementById('startupEmailInput').value.trim();
+        targetEmail = email || 'founder@startup.in';
+      } else if (activeLoginRole === 'validator') {
+        const email = document.getElementById('valEmailInput').value.trim();
+        targetEmail = email || 'auditor@iitd.ac.in';
+      }
+      const otpText = document.getElementById('otpTargetText');
+      if (otpText) otpText.textContent = `Verification OTP sent to ${targetEmail}`;
+
       document.getElementById('authCredStep').style.display = 'none';
       document.getElementById('authOtpStep').style.display = 'block';
-      showToast('📧 Verification code sent to email', 'info');
+      showToast(`📧 Verification code sent to ${targetEmail}`, 'info');
     }
     function backToCreds() {
       document.getElementById('authCredStep').style.display = 'block';
       document.getElementById('authOtpStep').style.display = 'none';
     }
-    function verifyOtpAndProceed() { quickDemoLogin(activeLoginRole); }
+    function verifyOtpAndProceed() {
+      const code = (document.getElementById('otpCodeInput').value || '').trim();
+      if (!code) {
+        showToast('Please enter the 4-digit code (Use 4821)', 'warning');
+        return;
+      }
+      quickDemoLogin(activeLoginRole);
+    }
 
     function quickDemoLogin(role) {
-      currentUser = { ...authProfiles[role] };
+      let user = { ...authProfiles[role] };
+
+      // Apply any user-selected or typed values
+      if (role === 'dept') {
+        const dept = document.getElementById('deptSelect').value;
+        const email = document.getElementById('govEmail').value.trim();
+        if (dept) user.sub = `${dept} · ${email || 'gov.in'}`;
+        if (email) user.sub = email;
+      } else if (role === 'startup') {
+        const stName = document.getElementById('startupNameInput').value.trim();
+        const stEmail = document.getElementById('startupEmailInput').value.trim();
+        if (stName) user.name = stName;
+        if (stEmail) user.sub = stEmail;
+      } else if (role === 'validator') {
+        const inst = document.getElementById('valInstSelect').value;
+        const valEmail = document.getElementById('valEmailInput').value.trim();
+        if (inst) user.sub = inst;
+        if (valEmail) user.sub = `${inst || 'Validator'} · ${valEmail}`;
+      }
+
+      currentUser = user;
       localStorage.setItem('nirman_user_profile', JSON.stringify(currentUser));
       updateAuthUI();
       closeLoginModal();
@@ -3762,10 +3857,39 @@
         const el = document.getElementById('studioStep' + i);
         if (el) el.style.display = i === s ? 'block' : 'none';
       }
+      if (s === 2) {
+        const draft = (document.getElementById('studioDraftText')?.value || '').trim();
+        const docText = document.getElementById('doctorOutcomeText');
+        if (docText && draft) {
+          docText.textContent = `"Deploy outcome-driven innovation to solve: ${draft.slice(0, 110)}... across field sites during a paid sandbox pilot with zero turnover barriers under GFR Rule 161(iv)."`;
+        }
+      } else if (s === 4) {
+        const dept = document.getElementById('studioDept')?.value || 'Dept. of Rural Health, UP';
+        const kpi = (document.getElementById('studioKpi')?.value || '').trim() || '< 5% wastage across 12 field sites';
+        const budget = (document.getElementById('studioBudget')?.value || '').trim() || '₹18,00,000';
+        const risk = document.getElementById('studioRisk')?.value || 'Medium';
+        const draft = (document.getElementById('studioDraftText')?.value || '').trim();
+
+        const revDept = document.getElementById('revDept');
+        const revKpi = document.getElementById('revKpi');
+        const revBudget = document.getElementById('revBudget');
+        const revRisk = document.getElementById('revRisk');
+        const revTitle = document.getElementById('revChallengeTitle');
+
+        if (revDept) revDept.textContent = dept;
+        if (revKpi) revKpi.textContent = kpi;
+        if (revBudget) revBudget.textContent = budget;
+        if (revRisk) revRisk.textContent = `${risk} Risk Sandbox`;
+        if (revTitle && draft) {
+          revTitle.textContent = draft.length > 55 ? draft.slice(0, 52) + '...' : draft;
+        }
+      }
     }
 
     function publishChallengeFromStudio() {
-      showToast('🚀 Outcome challenge published!', 'success');
+      const dept = document.getElementById('studioDept')?.value;
+      const budget = (document.getElementById('studioBudget')?.value || '').trim();
+      showToast(`🚀 Outcome challenge published for ${dept || 'Department'} (${budget || '₹18L'} Escrow)!`, 'success');
       go('discovery');
     }
 
