@@ -484,6 +484,40 @@
       color: #1E293B;
       resize: vertical;
     }
+    .editable-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #94A3B8;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    [contenteditable="true"] {
+      outline: none;
+      transition: background 0.15s, box-shadow 0.15s;
+      border-radius: 4px;
+    }
+    [contenteditable="true"]:hover {
+      background: rgba(9, 132, 227, 0.05);
+      cursor: text;
+    }
+    [contenteditable="true"]:focus {
+      background: rgba(9, 132, 227, 0.1);
+      box-shadow: 0 0 0 2px rgba(9, 132, 227, 0.4);
+    }
+
+    .btn-pptx {
+      background: linear-gradient(135deg, #D24726, #E0531E);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(210, 71, 38, 0.35);
+    }
+    .btn-pptx:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(210, 71, 38, 0.45);
+    }
   </style>
 </head>
 <body>
@@ -492,12 +526,14 @@
   <div class="toolbar">
     <div class="toolbar-title">
       <span>🚀 NIRMAN Technical Approach</span>
-      <span class="badge">SIH 2026 Presentation Ready</span>
+      <span class="badge">100% Editable Slide</span>
+      <span class="editable-hint">✏️ Click any text on the slide below to edit live</span>
     </div>
     <div class="toolbar-actions">
-      <button class="btn btn-canva" onclick="openCopyModal()">📋 Copy Canva Text &amp; Layout</button>
-      <a href="nirman_technical_approach_slide.svg" download="nirman_technical_approach_slide.svg" class="btn btn-outline">📥 Download Editable SVG (Import to Canva)</a>
-      <button class="btn btn-print" onclick="window.print()">🖨️ Save as 16:9 PDF (Import to Canva)</button>
+      <a href="NIRMAN_Technical_Approach_Slide.pptx" download="NIRMAN_Technical_Approach_Slide.pptx" class="btn btn-pptx">📊 Download PowerPoint (.pptx)</a>
+      <a href="nirman_technical_approach_slide.svg" download="nirman_technical_approach_slide.svg" class="btn btn-canva">🎨 Download Canva SVG</a>
+      <button class="btn btn-print" onclick="window.print()">🖨️ Save as 16:9 PDF</button>
+      <button class="btn btn-outline" onclick="openCopyModal()">📋 Copy Text</button>
     </div>
   </div>
 
@@ -507,10 +543,10 @@
     <!-- ─── SLIDE HEADER ─── -->
     <div class="slide-header">
       <!-- Oval Team Pill -->
-      <div class="team-pill">NIRMAN</div>
+      <div class="team-pill" contenteditable="true">NIRMAN</div>
 
       <!-- Center Title -->
-      <div class="slide-title">TECHNICAL APPROACH</div>
+      <div class="slide-title" contenteditable="true">TECHNICAL APPROACH</div>
 
       <!-- SIH 2026 Logo -->
       <div class="sih-logo-wrap">
@@ -556,32 +592,32 @@
           <!-- Step 1 -->
           <div class="pipeline-card c-purple">
             <span class="p-badge purple">📋</span>
-            <div class="p-title">1. Outcome Problem Spec</div>
-            <div class="p-desc">Departments post KPI targets &amp; escrow budget instead of specs.</div>
+            <div class="p-title" contenteditable="true">1. Outcome Problem Spec</div>
+            <div class="p-desc" contenteditable="true">Departments post KPI targets &amp; escrow budget instead of specs.</div>
           </div>
           <span class="arrow-icon">→</span>
 
           <!-- Step 2 -->
           <div class="pipeline-card c-gray">
             <span class="p-badge gray">⚖️</span>
-            <div class="p-title">2. GFR 161(iv) Compliance</div>
-            <div class="p-desc">Automated engine waives prior turnover &amp; 3-year track record.</div>
+            <div class="p-title" contenteditable="true">2. GFR 161(iv) Compliance</div>
+            <div class="p-desc" contenteditable="true">Automated engine waives prior turnover &amp; 3-year track record.</div>
           </div>
           <span class="arrow-icon">→</span>
 
           <!-- Step 3 -->
           <div class="pipeline-card c-emerald">
             <span class="p-badge emerald">🔒</span>
-            <div class="p-title">3. Milestone Escrow Lock</div>
-            <div class="p-desc">Department locks pilot tranches (₹18L) in bank escrow account.</div>
+            <div class="p-title" contenteditable="true">3. Milestone Escrow Lock</div>
+            <div class="p-desc" contenteditable="true">Department locks pilot tranches (₹18L) in bank escrow account.</div>
           </div>
           <span class="arrow-icon">→</span>
 
           <!-- Step 4 -->
           <div class="pipeline-card c-crimson">
             <span class="p-badge crimson">⚡</span>
-            <div class="p-title">4. Blind Jury Evaluation</div>
-            <div class="p-desc">Multi-expert scoring (Feasibility, Security, Cost) with zero bias.</div>
+            <div class="p-title" contenteditable="true">4. Blind Jury Evaluation</div>
+            <div class="p-desc" contenteditable="true">Multi-expert scoring (Feasibility, Security, Cost) with zero bias.</div>
           </div>
         </div>
 
@@ -590,44 +626,44 @@
           <!-- Step 5 -->
           <div class="pipeline-card c-gray">
             <span class="p-badge gray">📡</span>
-            <div class="p-title">5. Live IoT Telemetry Feed</div>
-            <div class="p-desc">Field sensors stream 15-min telemetry directly into sandbox.</div>
+            <div class="p-title" contenteditable="true">5. Live IoT Telemetry Feed</div>
+            <div class="p-desc" contenteditable="true">Field sensors stream 15-min telemetry directly into sandbox.</div>
           </div>
           <span class="arrow-icon">→</span>
 
           <!-- Step 6 -->
           <div class="pipeline-card c-blue">
             <span class="p-badge blue">🔬</span>
-            <div class="p-title">6. STQC / IIT Lab Audit</div>
-            <div class="p-desc">Independent 3rd-party audit validates telemetry logs &amp; KPIs.</div>
+            <div class="p-title" contenteditable="true">6. STQC / IIT Lab Audit</div>
+            <div class="p-desc" contenteditable="true">Independent 3rd-party audit validates telemetry logs &amp; KPIs.</div>
           </div>
           <span class="arrow-icon">→</span>
 
           <!-- Step 7 -->
           <div class="pipeline-card c-emerald">
             <span class="p-badge emerald">💸</span>
-            <div class="p-title">7. Smart Escrow Release</div>
-            <div class="p-desc">Milestone funds release to startup upon cryptographic sign-off.</div>
+            <div class="p-title" contenteditable="true">7. Smart Escrow Release</div>
+            <div class="p-desc" contenteditable="true">Milestone funds release to startup upon cryptographic sign-off.</div>
           </div>
           <span class="arrow-icon">→</span>
 
           <!-- Step 8 -->
           <div class="pipeline-card c-blue">
             <span class="p-badge blue">🏆</span>
-            <div class="p-title">8. National GeM Passport</div>
-            <div class="p-desc">1 successful pilot earns credential for pan-India direct scale-up.</div>
+            <div class="p-title" contenteditable="true">8. National GeM Passport</div>
+            <div class="p-desc" contenteditable="true">1 successful pilot earns credential for pan-India direct scale-up.</div>
           </div>
         </div>
       </div>
 
       <!-- Right Side: Product Status Panel -->
       <div class="status-panel">
-        <h4>PRODUCT STATUS :</h4>
-        <div class="status-highlight">90% product build completed and pilot testing is in active progress.</div>
-        <div class="status-desc">
+        <h4 contenteditable="true">PRODUCT STATUS :</h4>
+        <div class="status-highlight" contenteditable="true">90% product build completed and pilot testing is in active progress.</div>
+        <div class="status-desc" contenteditable="true">
           Interactive department problem studio, GFR 161(iv) Doctor rewrite engine, live telemetry stream simulator, and GeM Passport are fully functional.
         </div>
-        <div class="status-next">
+        <div class="status-next" contenteditable="true">
           <b>Next:</b> Ground telemetry pilot with UP Rural Health PHC cold-chain &amp; GeM API gateway.
         </div>
       </div>
@@ -638,17 +674,17 @@
       <!-- Col 1: Frontend Development -->
       <div class="tech-card">
         <div>
-          <div class="tech-card-header c-front">
+          <div class="tech-card-header c-front" contenteditable="true">
             <span>🖥️</span> Frontend Development
           </div>
-          <ul class="tech-bullets">
+          <ul class="tech-bullets" contenteditable="true">
             <li><b>HTML5 / Vanilla JS (ES6+):</b> Ultra-fast, zero-overhead execution with zero framework bloat &amp; &lt;1.2s page loads.</li>
             <li><b>Master CSS Grid &amp; Clamping:</b> One single responsive adaptive system with touch targets &ge; 44px on all screens.</li>
             <li><b>Real-time Telemetry Visualizer:</b> SVG dynamic charts streaming 15-min sensor logs &amp; milestone escrow gates.</li>
             <li><b>Offline Session Engine:</b> Persistent client state with instant role switching (Dept / Startup / Validator).</li>
           </ul>
         </div>
-        <div class="tech-badges">
+        <div class="tech-badges" contenteditable="true">
           <span class="tag orange">HTML5</span>
           <span class="tag blue">CSS3</span>
           <span class="tag yellow">JS ES6+</span>
@@ -660,17 +696,17 @@
       <!-- Col 2: Backend Development -->
       <div class="tech-card">
         <div>
-          <div class="tech-card-header c-back">
+          <div class="tech-card-header c-back" contenteditable="true">
             <span>⚙️</span> Backend Development
           </div>
-          <ul class="tech-bullets">
+          <ul class="tech-bullets" contenteditable="true">
             <li><b>Python FastAPI / Node.js:</b> High-concurrency async endpoints for challenge broadcasting &amp; bid processing.</li>
             <li><b>SBI Milestone Escrow Engine:</b> Smart release contract simulating tranches locked &amp; disbursed via digital escrow.</li>
             <li><b>GFR Rule 161(iv) Validator:</b> Automated rules parser flagging illegal prior-experience / turnover clauses.</li>
             <li><b>PostgreSQL &amp; Redis:</b> Relational audit trail for jury score normalization with Redis caching for instant queries.</li>
           </ul>
         </div>
-        <div class="tech-badges">
+        <div class="tech-badges" contenteditable="true">
           <span class="tag green">Node.js</span>
           <span class="tag blue">Python FastAPI</span>
           <span class="tag blue">PostgreSQL</span>
@@ -682,17 +718,17 @@
       <!-- Col 3: GovTech & Security Infrastructure -->
       <div class="tech-card">
         <div>
-          <div class="tech-card-header c-trust">
+          <div class="tech-card-header c-trust" contenteditable="true">
             <span>🔒</span> GovTech, Security &amp; Trust
           </div>
-          <ul class="tech-bullets">
+          <ul class="tech-bullets" contenteditable="true">
             <li><b>SHA-256 Telemetry Hashing:</b> Tamper-proof hash logs binding raw IoT sensor stream to validator audit records.</li>
             <li><b>STQC &amp; IIT Verification Protocol:</b> Independent third-party test certs adhering to MeitY STQC standards.</li>
             <li><b>DPIIT &amp; Startup India Integration:</b> Direct entity lookup verifying DIPP certificate and founder credentials.</li>
             <li><b>GeM National Passport Generator:</b> Verifiable QR credentials for fast-track L1 procurement exemption.</li>
           </ul>
         </div>
-        <div class="tech-badges">
+        <div class="tech-badges" contenteditable="true">
           <span class="tag purple">SHA-256</span>
           <span class="tag purple">STQC Lab</span>
           <span class="tag blue">DPIIT API</span>
