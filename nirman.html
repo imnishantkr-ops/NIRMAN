@@ -1459,7 +1459,7 @@
   <!-- NAVBAR -->
   <header>
     <div class="navbar">
-      <div class="brand" onclick="go('home')">
+      <div class="brand" onclick="handleBrandClick()">
         <div class="brand-mark">N</div>
         <div class="brand-text">
           <b>NIRMAN</b>
@@ -1467,9 +1467,9 @@
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
-      <nav class="tabs" id="tabs">
-        <button data-v="home" class="active">🏠 Home</button>
+      <!-- Navigation Tabs (Accessible ONLY after sign-in) -->
+      <nav class="tabs" id="tabs" style="display:none;">
+        <button data-v="home" id="tab-home" class="active">🏠 Home</button>
         <button data-v="gov-dashboard" id="tab-gov-dashboard">🏛️ Dashboard</button>
         <button data-v="studio" id="tab-studio">Challenge Studio</button>
         <button data-v="discovery" id="tab-discovery">Discovery</button>
@@ -1482,6 +1482,10 @@
         <button data-v="passport" id="tab-passport">Passport</button>
         <button data-v="scaleup" id="tab-scaleup">Marketplace</button>
       </nav>
+
+      <div id="unauthNavMsg" style="display:none;align-items:center;gap:6px;font-size:12px;color:#A3B5D0;padding:5px 14px;background:rgba(255,255,255,.06);border-radius:999px;border:1px solid rgba(255,255,255,.12);cursor:pointer;" onclick="openLoginModal()">
+        <span>🔒 Sign in to access Home, Discovery, Passport &amp; Marketplace</span>
+      </div>
 
       <div class="nav-actions">
         <button class="theme-btn" id="themeToggle" title="Toggle theme">☀️</button>
@@ -2699,10 +2703,12 @@
       if (!allViews.includes(v)) v = 'home';
 
       // Access & Role Session Enforcements
-      if (!currentUser && ['gov-dashboard', 'studio', 'screening', 'evaluate', 'pilot', 'measurement', 'validation', 'decision'].includes(v)) {
-        showToast('🔒 Please sign in to access this workflow stage.', 'warning');
-        openLoginModal();
-        return;
+      if (!currentUser) {
+        if (v !== 'home') {
+          showToast('🔒 Please sign in to access ' + v.toUpperCase() + '. All options unlock after sign-in.', 'warning');
+          openLoginModal('dept');
+          return;
+        }
       }
 
       if (currentUser && currentUser.role === 'startup' && ['gov-dashboard', 'studio', 'screening', 'evaluate', 'validation', 'decision'].includes(v)) {
@@ -2723,6 +2729,14 @@
         b.classList.toggle('active', b.dataset.v === v);
       });
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleBrandClick() {
+      if (currentUser) {
+        go('home');
+      } else {
+        openLoginModal('dept');
+      }
     }
 
     document.getElementById('tabs').addEventListener('click', e => {
@@ -2757,7 +2771,10 @@
 
       // First-time visit: Open Sign-In gateway modal
       if (!currentUser) {
-        go('home');
+        allViews.forEach(x => {
+          const el = document.getElementById('v-' + x);
+          if (el) el.classList.toggle('active', x === 'home');
+        });
         setTimeout(() => {
           openLoginModal('dept');
         }, 400);
@@ -3014,14 +3031,54 @@
       const isStartup = currentUser && currentUser.role === 'startup';
       const isValidator = currentUser && currentUser.role === 'validator';
 
+      const tabsNav = document.getElementById('tabs');
+      const unauthNavMsg = document.getElementById('unauthNavMsg');
+      const loginBtn = document.getElementById('loginBtn');
+      const userPill = document.getElementById('userPill');
+
+      // Before sign in: REMOVE all navigation options (Home, Discovery, Passport, Marketplace, etc.)
+      if (!currentUser) {
+        if (tabsNav) tabsNav.style.display = 'none';
+        if (unauthNavMsg) unauthNavMsg.style.display = 'inline-flex';
+        if (loginBtn) loginBtn.style.display = 'inline-flex';
+        if (userPill) userPill.style.display = 'none';
+        return;
+      }
+
+      // After sign in: Reveal navigation options according to role
+      if (tabsNav) tabsNav.style.display = 'flex';
+      if (unauthNavMsg) unauthNavMsg.style.display = 'none';
+      if (loginBtn) loginBtn.style.display = 'none';
+      if (userPill) userPill.style.display = 'inline-flex';
+
+      document.getElementById('userAvatar').textContent = currentUser.avatar;
+      document.getElementById('userName').textContent = currentUser.name;
+      document.getElementById('userRole').textContent = currentUser.roleTitle;
+      document.getElementById('menuName').textContent = currentUser.name;
+      document.getElementById('menuSub').textContent = currentUser.sub;
+      const menuBadge = document.getElementById('menuBadge');
+      if (menuBadge) {
+        menuBadge.textContent = currentUser.roleTitle;
+        menuBadge.className = isStartup ? 'badge-tag startup' : (isValidator ? 'badge-tag validator' : 'badge-tag gov');
+      }
+
+      const tabHome = document.getElementById('tab-home');
       const tabGovDash = document.getElementById('tab-gov-dashboard');
       const tabStudio = document.getElementById('tab-studio');
+      const tabDiscovery = document.getElementById('tab-discovery');
       const tabScreening = document.getElementById('tab-screening');
       const tabEvaluate = document.getElementById('tab-evaluate');
       const tabPilot = document.getElementById('tab-pilot');
       const tabMeasurement = document.getElementById('tab-measurement');
       const tabValidation = document.getElementById('tab-validation');
       const tabDecision = document.getElementById('tab-decision');
+      const tabPassport = document.getElementById('tab-passport');
+      const tabScaleup = document.getElementById('tab-scaleup');
+
+      if (tabHome) tabHome.style.display = '';
+      if (tabDiscovery) tabDiscovery.style.display = '';
+      if (tabPassport) tabPassport.style.display = '';
+      if (tabScaleup) tabScaleup.style.display = '';
 
       if (tabGovDash) tabGovDash.style.display = isGov ? '' : 'none';
       if (tabStudio) tabStudio.style.display = isGov ? '' : 'none';
@@ -3031,27 +3088,6 @@
       if (tabMeasurement) tabMeasurement.style.display = (isGov || isStartup || isValidator) ? '' : 'none';
       if (tabValidation) tabValidation.style.display = (isGov || isValidator) ? '' : 'none';
       if (tabDecision) tabDecision.style.display = isGov ? '' : 'none';
-
-      const loginBtn = document.getElementById('loginBtn');
-      const userPill = document.getElementById('userPill');
-
-      if (currentUser) {
-        if (loginBtn) loginBtn.style.display = 'none';
-        if (userPill) userPill.style.display = 'inline-flex';
-        document.getElementById('userAvatar').textContent = currentUser.avatar;
-        document.getElementById('userName').textContent = currentUser.name;
-        document.getElementById('userRole').textContent = currentUser.roleTitle;
-        document.getElementById('menuName').textContent = currentUser.name;
-        document.getElementById('menuSub').textContent = currentUser.sub;
-        const menuBadge = document.getElementById('menuBadge');
-        if (menuBadge) {
-          menuBadge.textContent = currentUser.roleTitle;
-          menuBadge.className = isStartup ? 'badge-tag startup' : (isValidator ? 'badge-tag validator' : 'badge-tag gov');
-        }
-      } else {
-        if (loginBtn) loginBtn.style.display = 'inline-flex';
-        if (userPill) userPill.style.display = 'none';
-      }
 
       renderDiscovery();
     }
@@ -3107,8 +3143,12 @@
       localStorage.removeItem('nirman_user_profile');
       updateAuthUI();
       closeUserDropdown();
-      go('home');
-      showToast('Signed out of session. Choose your role to sign in.', 'info');
+      allViews.forEach(x => {
+        const el = document.getElementById('v-' + x);
+        if (el) el.classList.toggle('active', x === 'home');
+      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToast('Signed out of session. Please sign in to access portal options.', 'info');
       setTimeout(() => {
         openLoginModal('dept');
       }, 350);
