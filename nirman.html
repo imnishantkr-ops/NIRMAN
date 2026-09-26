@@ -1408,16 +1408,432 @@
       gap: 16px;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
+    /* ═══════════════════════════════════════════════════════════════════════════
+       MASTER RESPONSIVE DESIGN SYSTEM & BREAKPOINT ARCHITECTURE
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    /* Global Overflow Prevention & Safe Area */
+    html, body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    img, svg, video, canvas, audio, iframe, embed, object {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Fluid Page Container */
+    .wrap {
+      width: 100%;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(16px, 3.2vw, 32px);
+      padding-right: clamp(16px, 3.2vw, 32px);
+      box-sizing: border-box;
+    }
+
+    /* Responsive Grid Utilities (Replacing rigid inline styles) */
+    .dash-grid-split,
+    .studio-grid-split,
+    .screening-grid-split,
+    .pilot-grid-split {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      width: 100%;
+    }
+    .studio-grid-split {
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+    }
+    .screening-grid-split {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 24px;
+    }
+    .pilot-grid-split {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .passport-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+      background: rgba(255, 255, 255, .06);
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .passport-action-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive Table Scroller */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .table-responsive table {
+      width: 100%;
+      min-width: 600px;
+      border-collapse: collapse;
+      margin: 0;
+    }
+    .table-scroll-hint {
+      display: none;
+      font-size: 11.5px;
+      color: var(--slate);
+      padding: 7px 14px;
+      background: var(--card-alt);
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    /* Target vs Actual KPI Visual Telemetry Gauge */
+    .telemetry-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .telemetry-bar-wrap {
+      background: var(--card-alt);
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 8px 0 6px;
+      position: relative;
+      width: 100%;
+    }
+    .telemetry-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--saffron), var(--emerald));
+      transition: width 1s ease;
+    }
+
+    /* Mobile Menu Button in Navbar */
+    .mobile-menu-btn {
+      display: none;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .2);
+      color: #fff;
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      cursor: pointer;
+      gap: 6px;
+      font-weight: 600;
+      transition: .2s;
+    }
+    .mobile-menu-btn:hover {
+      background: rgba(255, 255, 255, .16);
+    }
+
+    /* Mobile Nav Drawer & Backdrop */
+    .mobile-nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 13, 26, .7);
+      backdrop-filter: blur(4px);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .mobile-nav-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: min(88vw, 360px);
+      background: var(--navy);
+      color: #fff;
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 4px 0 30px rgba(0, 0, 0, .5);
+      transform: translateX(-100%);
+      transition: transform .32s cubic-bezier(.16, 1, .3, 1);
+      overflow-y: auto;
+      padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+    .mobile-nav-drawer.active {
+      transform: translateX(0);
+    }
+    .drawer-header {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+    .drawer-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .15);
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .drawer-user-card {
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, .04);
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+    .drawer-search-wrap {
+      padding: 10px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+    .drawer-search-wrap input {
+      width: 100%;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 10px;
+      padding: 9px 14px;
+      color: #fff;
+      font-size: 13.5px;
+      outline: none;
+    }
+    .drawer-search-wrap input::placeholder { color: #8E9FB8; }
+    .drawer-nav {
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      flex: 1;
+    }
+    .drawer-section-label {
+      font-size: 10px;
+      color: #8E9FB8;
+      font-weight: 700;
+      letter-spacing: .08em;
+      padding: 8px 10px 4px;
+      text-transform: uppercase;
+    }
+    .drawer-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      color: #C7CEE2;
+      font: 500 13px 'Plus Jakarta Sans', Inter, sans-serif;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      transition: all .15s ease;
+    }
+    .drawer-nav-item:hover, .drawer-nav-item.active {
+      background: rgba(255, 107, 53, .16);
+      color: #FF9E7A;
+      font-weight: 600;
+    }
+    .drawer-nav-item.active {
+      background: var(--saffron);
+      color: #fff;
+    }
+    .drawer-nav-item .d-icon { font-size: 15px; flex-shrink: 0; }
+    .drawer-nav-item .d-text { flex: 1; }
+    .drawer-footer {
+      padding: 14px 20px;
+      border-top: 1px solid rgba(255, 255, 255, .08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Fixed Mobile Bottom Nav */
+    .mobile-bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 31, 58, .96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      z-index: 990;
+      display: none;
+      align-items: center;
+      justify-content: space-around;
+      padding: 6px 12px max(8px, env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, .3);
+    }
+    .mb-nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      background: transparent;
+      border: none;
+      color: #94A3B8;
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: 10.5px;
+      font-weight: 600;
+      min-width: 50px;
+      transition: color .15s;
+    }
+    .mb-nav-btn .mb-icon { font-size: 17px; }
+    .mb-nav-btn.active, .mb-nav-btn:hover {
+      color: var(--saffron);
+    }
+
+    /* Accessibility Focus & Reduced Motion */
+    :focus-visible {
+      outline: 2px solid var(--saffron);
+      outline-offset: 2px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════════════
+       ADAPTIVE BREAKPOINTS
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    /* 1. Large Monitors (1536px+) */
+    @media (min-width: 1536px) {
+      .wrap { max-width: 1400px; }
+      .hero { padding: 120px 0 100px; }
+      .hero h1 { font-size: 58px; }
+    }
+
+    /* 2. Laptops & Small Desktops (1024px – 1279px) */
+    @media (max-width: 1279px) {
+      nav.tabs { max-width: calc(100vw - 320px); }
+      .hero-grid { gap: 40px; }
+      .footer-grid { gap: 30px; }
+    }
+
+    /* 3. Tablets Landscape & Portrait (<= 1024px) */
+    @media (max-width: 1024px) {
+      nav.tabs { display: none !important; } /* Switch to drawer & bottom nav */
+      .mobile-menu-btn { display: inline-flex; }
+      .dash-grid-split,
+      .studio-grid-split,
+      .screening-grid-split,
+      .pilot-grid-split {
+        grid-template-columns: 1fr;
+      }
+      .grid3 { grid-template-columns: repeat(2, 1fr); }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+      .table-scroll-hint { display: flex; }
+    }
+
+    /* 4. Mobile Devices (<= 768px) */
+    @media (max-width: 768px) {
+      body.has-bottom-nav { padding-bottom: 74px; }
+      .float-cta { bottom: 84px; right: 16px; }
+      section { padding: 40px 0; }
+      .hero { padding: 60px 0 50px; }
+      .hero h1 { font-size: clamp(26px, 6.5vw, 42px); }
+      .hero-hl-line1 { font-size: clamp(22px, 5.8vw, 36px); }
+      .hero-hl-line2 { font-size: clamp(22px, 5.8vw, 36px); }
+      .hero-float-badge { position: static; margin-top: 14px; }
+      .hero-float-badge-2 { position: static; margin-top: 10px; display: inline-block; }
       .compare-wrap { grid-template-columns: 1fr; }
       .pipeline-visual-row { grid-template-columns: 1fr; }
       .pipeline-visual-img { display: none; }
-      .grid3 { grid-template-columns: 1fr; }
       .steps-visual { grid-template-columns: 1fr; }
-      .impact-grid { grid-template-columns: 1fr 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      nav.tabs { max-width: calc(100vw - 180px); }
+      .grid3 { grid-template-columns: 1fr; }
+      .field input, .field select, .field textarea { font-size: 16px; min-height: 44px; }
+      .btn { min-height: 44px; }
+      .hero .cta-row { flex-direction: column; width: 100%; }
+      .hero .cta-row button { width: 100%; }
+      .passport-action-row button { width: 100%; }
+      .passport-stat-grid { grid-template-columns: 1fr; gap: 8px; }
+      
+      /* Mobile Bottom Sheet Modal */
+      .modal-overlay {
+        align-items: flex-end;
+        padding: 0;
+      }
+      .modal-card {
+        max-width: 100%;
+        border-radius: 22px 22px 0 0;
+        max-height: 92vh;
+        margin: 0;
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+      }
+      .modal-header { padding: 16px 20px; }
+      .modal-body { padding: 20px; }
+      .auth-roles { grid-template-columns: 1fr; gap: 8px; }
+      .auth-role-btn { flex-direction: row; justify-content: flex-start; padding: 12px 16px; min-height: 44px; }
+    }
+
+    /* 5. Small Mobile Phones (<= 480px) */
+    @media (max-width: 480px) {
+      .navbar { padding: 10px 14px; }
+      .brand-text b { font-size: 16px; }
+      .brand-text span { font-size: 9.5px; }
+      .brand-mark { width: 32px; height: 32px; font-size: 16px; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .sec-head h2 { font-size: 22px; }
+      .panel { padding: 18px 14px; }
+      .metric-tile .tile-num { font-size: 26px; }
+    }
+
+    /* 6. Reduced Motion Support */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .ticker-track { animation: none; }
+      .hero-orb { animation: none; }
     }
   </style>
 </head>
@@ -1510,9 +1926,80 @@
             </div>
           </div>
         </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu" onclick="toggleMobileDrawer()">
+          <span>☰</span><span>Menu</span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- MOBILE NAVIGATION DRAWER & BACKDROP -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileDrawer()"></div>
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <div class="brand" onclick="handleBrandClick(); closeMobileDrawer();">
+        <div class="brand-mark">N</div>
+        <div class="brand-text">
+          <b>NIRMAN</b>
+          <span>Procurement Sandbox</span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" onclick="closeMobileDrawer()" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="drawer-user-card" id="drawerUserCard">
+      <!-- Injected dynamically in updateAuthUI() -->
+    </div>
+
+    <div class="drawer-search-wrap">
+      <input type="text" id="drawerSearchInput" placeholder="🔍 Search stages, modules, challenges..." oninput="filterDrawerNav(this.value)">
+    </div>
+
+    <nav class="drawer-nav" id="drawerNavLinks">
+      <div class="drawer-section-label">SANDBOX WORKFLOW</div>
+      <button class="drawer-nav-item active" data-v="home" onclick="navFromDrawer('home')">
+        <span class="d-icon">🏠</span><span class="d-text">Home Overview</span>
+      </button>
+      <button class="drawer-nav-item" data-v="gov-dashboard" id="dtab-gov-dashboard" onclick="navFromDrawer('gov-dashboard')">
+        <span class="d-icon">🏛️</span><span class="d-text">Nodal Dashboard</span><span class="badge-tag gov btn-sm" style="font-size:9.5px;">Govt</span>
+      </button>
+      <button class="drawer-nav-item" data-v="studio" id="dtab-studio" onclick="navFromDrawer('studio')">
+        <span class="d-icon">🎯</span><span class="d-text">Challenge Studio</span>
+      </button>
+      <button class="drawer-nav-item" data-v="discovery" id="dtab-discovery" onclick="navFromDrawer('discovery')">
+        <span class="d-icon">📡</span><span class="d-text">Startup Discovery &amp; Radar</span>
+      </button>
+      <button class="drawer-nav-item" data-v="screening" id="dtab-screening" onclick="navFromDrawer('screening')">
+        <span class="d-icon">📋</span><span class="d-text">Eligibility Screening</span>
+      </button>
+      <button class="drawer-nav-item" data-v="evaluate" id="dtab-evaluate" onclick="navFromDrawer('evaluate')">
+        <span class="d-icon">⚖️</span><span class="d-text">Expert Evaluation</span>
+      </button>
+      <button class="drawer-nav-item" data-v="pilot" id="dtab-pilot" onclick="navFromDrawer('pilot')">
+        <span class="d-icon">🚀</span><span class="d-text">Pilot &amp; Escrow Workspace</span>
+      </button>
+      <button class="drawer-nav-item" data-v="measurement" id="dtab-measurement" onclick="navFromDrawer('measurement')">
+        <span class="d-icon">📊</span><span class="d-text">Performance Measurement</span>
+      </button>
+      <button class="drawer-nav-item" data-v="validation" id="dtab-validation" onclick="navFromDrawer('validation')">
+        <span class="d-icon">🔬</span><span class="d-text">Independent Validation</span>
+      </button>
+      <button class="drawer-nav-item" data-v="decision" id="dtab-decision" onclick="navFromDrawer('decision')">
+        <span class="d-icon">🏛️</span><span class="d-text">Scale-Up Decision</span>
+      </button>
+      <button class="drawer-nav-item" data-v="passport" id="dtab-passport" onclick="navFromDrawer('passport')">
+        <span class="d-icon">🛂</span><span class="d-text">Innovation Passport</span>
+      </button>
+      <button class="drawer-nav-item" data-v="scaleup" id="dtab-scaleup" onclick="navFromDrawer('scaleup')">
+        <span class="d-icon">🛒</span><span class="d-text">National Marketplace</span>
+      </button>
+    </nav>
+
+    <div class="drawer-footer">
+      <span style="font-size:11.5px;color:var(--slate);">GFR 2017 Rule 161(iv)</span>
+      <button class="btn btn-outline btn-sm" onclick="toggleThemeFromDrawer()">🌓 Theme</button>
+    </div>
+  </aside>
 
   <!-- ═══════════════════════════════════════════════════════════════════════════
        1. HOME VIEW (Full Visuals, Animations, Images & Sections)
@@ -1883,7 +2370,7 @@
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:24px;">
+      <div class="dash-grid-split">
         <div class="panel">
           <h3 style="font-size:18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
             <span>📋 Real-Time Sandbox Audit &amp; Activity Log</span>
@@ -1921,7 +2408,7 @@
         <p>Transform restrictive vendor specifications into open, measurable outcome-based sandbox challenges.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:260px 1fr;gap:28px;">
+      <div class="studio-grid-split">
         <div class="panel" style="padding:16px;">
           <div style="font-weight:700;font-size:13px;color:var(--slate);margin-bottom:12px;text-transform:uppercase;">Formulation Steps</div>
           <div style="display:flex;flex-direction:column;gap:6px;">
@@ -2057,7 +2544,7 @@
         <p>Statutory pass/fail compliance checklist verifying DPIIT registration, legal standing, conflict of interest, and prior turnover exemption waiver.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:28px;">
+      <div class="screening-grid-split">
         <div class="panel">
           <h3 style="font-size:18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
             <span>Applicant: <b>AarambhX (DIPP98412)</b></span>
@@ -2095,7 +2582,7 @@
             </div>
           </div>
 
-          <div style="margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid var(--line);">
+          <div style="margin-top:24px;display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid var(--line);flex-wrap:wrap;gap:12px;">
             <span class="badge-tag ok">ALL ELIGIBILITY PASSED</span>
             <button class="btn btn-primary" onclick="showToast('✅ Moved to Expert Evaluation Jury Pool!', 'success'); go('evaluate');">Forward to Evaluation Jury →</button>
           </div>
@@ -2120,24 +2607,27 @@
         <p>Multi-expert blind jury scoring against standard weighted criteria definitions.</p>
       </div>
 
-      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:28px;">
+      <div class="screening-grid-split">
         <div>
           <div class="panel" style="margin-bottom:24px;">
             <h3 style="font-size:18px;margin-bottom:14px;">Evaluated Applicants Leaderboard</h3>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Applicant</th>
-                  <th>Feasibility (30%)</th>
-                  <th>Scalability (25%)</th>
-                  <th>Security (25%)</th>
-                  <th>Cost (20%)</th>
-                  <th>Total</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="evalTableBody"></tbody>
-            </table>
+            <div class="table-responsive">
+              <div class="table-scroll-hint"><span>👈</span> Swipe horizontally to view full juror scores <span>👉</span></div>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Applicant</th>
+                    <th>Feasibility (30%)</th>
+                    <th>Scalability (25%)</th>
+                    <th>Security (25%)</th>
+                    <th>Cost (20%)</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="evalTableBody"></tbody>
+              </table>
+            </div>
           </div>
 
           <div class="panel">
@@ -2221,7 +2711,7 @@
       <h3 style="font-size:18px;margin-bottom:14px;">Milestone Payment Escrow Schedule (Template 7)</h3>
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;margin-bottom:32px;" id="milestoneCardsGrid"></div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div class="pilot-grid-split">
         <div class="panel">
           <div class="kicker-pill" style="font-size:10.5px;">Templates 3 &amp; 4</div>
           <h3 style="font-size:16px;margin-bottom:12px;">Pilot Agreement &amp; IP Selection</h3>
@@ -2260,49 +2750,91 @@
         <p>Real-time telemetry and ground validation data comparing contractual target KPIs against field measurements.</p>
       </div>
 
+      <!-- Mobile & Responsive Visual Telemetry Gauge Cards -->
+      <div class="dash-grid-split" style="margin-bottom:24px;">
+        <div class="telemetry-card">
+          <div class="telemetry-row">
+            <div>
+              <div style="font-weight:700;font-size:14px;">Cold-Chain Wastage Rate</div>
+              <div style="font-size:11.5px;color:var(--slate);">Contractual target: &lt; 5.0% · Baseline: 18.4%</div>
+            </div>
+            <span class="badge-tag ok">✓ Achieved (3.8%)</span>
+          </div>
+          <div class="telemetry-bar-wrap">
+            <div class="telemetry-bar-fill" style="width: 86%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--slate);">
+            <span>Baseline: 18.4%</span>
+            <span>Target: &lt;5%</span>
+            <span style="color:var(--emerald);font-weight:700;">Actual: 3.8%</span>
+          </div>
+        </div>
+
+        <div class="telemetry-card">
+          <div class="telemetry-row">
+            <div>
+              <div style="font-weight:700;font-size:14px;">Alert Latency &amp; Uptime</div>
+              <div style="font-size:11.5px;color:var(--slate);">Latency: 4.2m (Target &lt;15m) · Uptime: 99.4%</div>
+            </div>
+            <span class="badge-tag ok">✓ 99.4% Uptime</span>
+          </div>
+          <div class="telemetry-bar-wrap">
+            <div class="telemetry-bar-fill" style="width: 94%;"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--slate);">
+            <span>Baseline: &gt;120m</span>
+            <span>Target: &lt;15m</span>
+            <span style="color:var(--emerald);font-weight:700;">Actual: 4.2m</span>
+          </div>
+        </div>
+      </div>
+
       <div class="panel" style="margin-bottom:24px;">
-        <h3 style="font-size:18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;">
+        <h3 style="font-size:18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
           <span>Target vs. Actual KPI Matrix (Template 8)</span>
           <span class="badge-tag ok">Status: ON TRACK (94.2%)</span>
         </h3>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Performance Metric</th>
-              <th>Baseline</th>
-              <th>Target KPI</th>
-              <th>Actual Measured</th>
-              <th>Variance</th>
-              <th>Status Flag</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><b>Cold-Chain Wastage Rate</b></td>
-              <td>18.4%</td>
-              <td>&lt; 5.0%</td>
-              <td><b style="color:var(--emerald);">3.8%</b></td>
-              <td>-1.2% (Outperformed)</td>
-              <td><span class="badge-tag ok">✓ ON-TRACK</span></td>
-            </tr>
-            <tr>
-              <td><b>Temperature Alert Latency</b></td>
-              <td>&gt; 120 mins</td>
-              <td>&lt; 15 mins</td>
-              <td><b style="color:var(--emerald);">4.2 mins</b></td>
-              <td>-10.8 mins</td>
-              <td><span class="badge-tag ok">✓ ON-TRACK</span></td>
-            </tr>
-            <tr>
-              <td><b>PHC Telemetry Uptime</b></td>
-              <td>N/A</td>
-              <td>&gt; 98.0%</td>
-              <td><b style="color:var(--emerald);">99.4%</b></td>
-              <td>+1.4%</td>
-              <td><span class="badge-tag ok">✓ ON-TRACK</span></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <div class="table-scroll-hint"><span>👈</span> Swipe horizontally to inspect telemetry variance data <span>👉</span></div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Performance Metric</th>
+                <th>Baseline</th>
+                <th>Target KPI</th>
+                <th>Actual Measured</th>
+                <th>Variance</th>
+                <th>Status Flag</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Cold-Chain Wastage Rate</b></td>
+                <td>18.4%</td>
+                <td>&lt; 5.0%</td>
+                <td><b style="color:var(--emerald);">3.8%</b></td>
+                <td>-1.2% (Outperformed)</td>
+                <td><span class="badge-tag ok">✓ ON-TRACK</span></td>
+              </tr>
+              <tr>
+                <td><b>Temperature Alert Latency</b></td>
+                <td>&gt; 120 mins</td>
+                <td>&lt; 15 mins</td>
+                <td><b style="color:var(--emerald);">4.2 mins</b></td>
+                <td>-10.8 mins</td>
+                <td><span class="badge-tag ok">✓ ON-TRACK</span></td>
+              </tr>
+              <tr>
+                <td><b>PHC Telemetry Uptime</b></td>
+                <td>N/A</td>
+                <td>&gt; 98.0%</td>
+                <td><b style="color:var(--emerald);">99.4%</b></td>
+                <td>+1.4%</td>
+                <td><span class="badge-tag ok">✓ ON-TRACK</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <div style="display:flex;justify-content:flex-end;">
@@ -2445,6 +2977,30 @@
       <div class="card-grid" id="scaleupCardsGrid"></div>
     </section>
   </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION (Quick touch actions) -->
+  <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Quick mobile navigation" style="display:none;">
+    <button class="mb-nav-btn active" data-v="home" id="mb-home" onclick="go('home')">
+      <span class="mb-icon">🏠</span>
+      <span class="mb-label">Home</span>
+    </button>
+    <button class="mb-nav-btn" data-v="discovery" id="mb-discovery" onclick="go('discovery')">
+      <span class="mb-icon">📡</span>
+      <span class="mb-label">Discovery</span>
+    </button>
+    <button class="mb-nav-btn" data-v="pilot" id="mb-pilot" onclick="go('pilot')">
+      <span class="mb-icon">🚀</span>
+      <span class="mb-label">Pilots</span>
+    </button>
+    <button class="mb-nav-btn" data-v="passport" id="mb-passport" onclick="go('passport')">
+      <span class="mb-icon">🛂</span>
+      <span class="mb-label">Passport</span>
+    </button>
+    <button class="mb-nav-btn" id="mb-more" onclick="toggleMobileDrawer()">
+      <span class="mb-icon">☰</span>
+      <span class="mb-label">More</span>
+    </button>
+  </nav>
 
   <!-- ═══════════════════════════════════════════════════════════════════════════
        FLOATING CTA BUTTON
