@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>NIRMAN — From Innovation to Impact</title>
+  <title>NIRMAN — From Innovation to Impact | India's Procurement Sandbox</title>
+  <meta name="description" content="NIRMAN is India's first outcome-based public procurement sandbox connecting government departments with DPIIT-recognized startups through transparent, milestone-gated pilot programs.">
+  <meta property="og:title" content="NIRMAN — From Innovation to Impact">
+  <meta property="og:description" content="India's first outcome-based procurement sandbox. No prior turnover required.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,560;9..144,700&family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,560;9..144,700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -1994,10 +1997,352 @@
         font-size: 36px;
       }
     }
+
+    /* ═══════════════════════════════════════════════════
+       ENHANCED UI — inspired by Google & YC Startup School
+    ═══════════════════════════════════════════════════ */
+
+    /* Progress bar at top */
+    #readProgress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--saffron), #FFB347, var(--emerald));
+      z-index: 200;
+      width: 0%;
+      transition: width .1s linear;
+    }
+
+    /* Ticker / Marquee */
+    .ticker-wrap {
+      background: linear-gradient(90deg, var(--saffron), #FF8C5A);
+      overflow: hidden;
+      padding: 9px 0;
+      white-space: nowrap;
+      position: relative;
+    }
+    .ticker-track {
+      display: inline-flex;
+      animation: tickerScroll 40s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+      font: 600 13px 'Plus Jakarta Sans', Inter, sans-serif;
+      padding: 0 32px;
+      letter-spacing: .02em;
+    }
+    .ticker-sep { color: rgba(255,255,255,.45); font-size: 10px; }
+
+    /* Hero illustration panel */
+    .hero-img-wrap {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px -20px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .hero-img-glow {
+      position: absolute;
+      inset: -2px; border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255,107,53,.4) 0%, rgba(15,169,104,.3) 50%, rgba(201,162,39,.3) 100%);
+      filter: blur(20px); z-index: -1;
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%,100% { opacity: .5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.03); }
+    }
+
+    /* Floating badges on hero image */
+    .hero-float-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: rgba(11,31,58,.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 14px; padding: 12px 16px;
+      display: flex; align-items: center; gap: 10px;
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+    @keyframes floatBadge {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    .hero-float-badge .badge-icon { font-size: 22px; }
+    .hero-float-badge .badge-text b { display: block; color: #fff; font-size: 14px; font-weight: 700; }
+    .hero-float-badge .badge-text span { color: #8AA3C0; font-size: 11.5px; }
+    .hero-float-badge-2 {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(15,169,104,.15);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(15,169,104,.35);
+      border-radius: 12px; padding: 10px 14px;
+      animation: floatBadge 3s ease-in-out infinite 1.5s;
+    }
+    .hero-float-badge-2 span { color: #67E0A6; font: 700 12px Inter; letter-spacing: .03em; }
+    .hero-float-badge-2 b { display: block; color: #fff; font-size: 18px; font-family: 'Syne', Fraunces; font-weight: 800; }
+
+    /* Scroll-reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { position: relative; overflow: hidden; }
+    .testimonials-bg {
+      position: absolute; inset: 0;
+      background-image: url('india_map_bg.jpg');
+      background-size: cover; background-position: center;
+      opacity: .18;
+    }
+    .testi-track {
+      display: flex; gap: 24px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 12px; scrollbar-width: none; margin-top: 40px;
+    }
+    .testi-track::-webkit-scrollbar { display: none; }
+    .testi-card {
+      flex-shrink: 0; width: 380px; scroll-snap-align: start;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 28px;
+      backdrop-filter: blur(16px); transition: .3s;
+    }
+    .testi-card:hover {
+      background: rgba(255,255,255,.09);
+      border-color: rgba(255,107,53,.3);
+      transform: translateY(-4px);
+    }
+    .testi-stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-quote { color: #C8D4E8; font-size: 14.5px; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: Fraunces; font-weight: 700; font-size: 17px; flex-shrink: 0;
+    }
+    .testi-author .name { font-weight: 700; color: #fff; font-size: 14px; }
+    .testi-author .role { color: #7A90B4; font-size: 12px; margin-top: 2px; }
+    .testi-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+    .testi-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.2); cursor: pointer; transition: .2s; }
+    .testi-dot.active { background: var(--saffron); transform: scale(1.3); }
+
+    /* ── IMPACT COUNTERS ── */
+    .impact-section {
+      background: linear-gradient(135deg, #050D1A 0%, var(--navy) 50%, #091628 100%);
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      position: relative; overflow: hidden;
+    }
+    .impact-section::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 20% 50%, rgba(255,107,53,.08) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 50%, rgba(15,169,104,.08) 0%, transparent 60%);
+    }
+    .impact-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: rgba(255,255,255,.08);
+      border-radius: 20px; overflow: hidden; margin-top: 40px;
+    }
+    .impact-cell {
+      background: rgba(11,31,58,.9); padding: 36px 28px;
+      text-align: center; transition: .3s; position: relative;
+    }
+    .impact-cell::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,107,53,.07), transparent);
+      opacity: 0; transition: .3s;
+    }
+    .impact-cell:hover::after { opacity: 1; }
+    .impact-cell:hover { background: rgba(18,42,77,.95); }
+    .impact-num {
+      font-family: 'Syne', Fraunces; font-weight: 800; font-size: 48px; line-height: 1;
+      background: linear-gradient(135deg, #fff 60%, rgba(255,107,53,.9));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .impact-lbl { color: #6B7FA0; font-size: 13px; font-weight: 500; line-height: 1.4; }
+    .impact-icon { font-size: 24px; margin-bottom: 10px; }
+
+    /* ── FEATURE image wrap ── */
+    .feature-img-wrap {
+      border-radius: 20px; overflow: hidden;
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,.35);
+      margin-bottom: 48px; height: 280px; position: relative;
+    }
+    .feature-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .feature-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(250,250,248,.95) 0%, transparent 60%);
+    }
+
+    /* ── PIPELINE visual row ── */
+    .pipeline-visual-row { display: grid; grid-template-columns: 1fr 320px; gap: 48px; align-items: start; margin-top: 48px; }
+    .pipeline-visual-img { border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,.5); position: sticky; top: 80px; }
+    .pipeline-visual-img img { width: 100%; display: block; }
+
+    /* ── QUOTE BANNER ── */
+    .quote-banner {
+      background: linear-gradient(135deg, var(--saffron), #FF9A5C);
+      border-radius: 24px; padding: 48px; position: relative; overflow: hidden; margin: 64px 0;
+    }
+    .quote-banner::before {
+      content: '"'; position: absolute; font-family: Fraunces; font-size: 280px;
+      color: rgba(255,255,255,.12); top: -40px; left: 20px; line-height: 1;
+    }
+    .quote-banner p {
+      color: #fff; font-size: clamp(18px, 2.5vw, 24px); font-family: Fraunces; font-weight: 560;
+      line-height: 1.5; max-width: 680px; position: relative; z-index: 1;
+    }
+    .quote-banner .quote-src { color: rgba(255,255,255,.75); font-size: 14px; margin-top: 16px; font-family: Inter; font-weight: 500; position: relative; z-index: 1; }
+
+    /* ── PARTNER STRIP ── */
+    .partners-strip { padding: 40px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 64px 0; }
+    .partners-strip .label { text-align: center; font-size: 12.5px; font-weight: 600; color: var(--slate); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 28px; }
+    .partners-logos { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .partner-logo {
+      background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 20px;
+      font: 700 13px 'Plus Jakarta Sans', Inter, sans-serif; color: var(--slate);
+      display: flex; align-items: center; gap: 8px; transition: .2s; cursor: default;
+    }
+    .partner-logo:hover { border-color: var(--saffron); color: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 20px -8px rgba(255,107,53,.2); }
+
+    /* ── 3-STEP CARDS ── */
+    .steps-visual { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .step-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+      padding: 28px; position: relative; overflow: hidden; transition: .3s;
+    }
+    .step-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--saffron), #FFB347);
+      transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+    }
+    .step-card:hover::before { transform: scaleX(1); }
+    .step-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px -24px rgba(11,31,58,.2); border-color: rgba(255,107,53,.2); }
+    .step-num { font-family: 'Syne', Fraunces; font-weight: 800; font-size: 52px; color: var(--saffron); opacity: .18; line-height: 1; margin-bottom: 8px; }
+    .step-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .step-card h4 { font-size: 16px; font-family: 'Plus Jakarta Sans', Inter; font-weight: 700; margin-bottom: 8px; }
+    .step-card p { font-size: 13.5px; color: var(--slate); line-height: 1.6; }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
+      color: #C7CEE2; width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 16px; transition: .2s; flex-shrink: 0;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+    /* ── ENHANCED FOOTER ── */
+    footer {
+      background: var(--navy); color: #9AA6C4; padding: 60px 0 32px;
+      font-size: 13px; border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    .footer-brand h3 { font-family: 'Syne', Fraunces; font-weight: 800; font-size: 22px; color: #fff; letter-spacing: -.01em; margin-bottom: 8px; }
+    .footer-brand p { color: #4A5A78; font-size: 13px; line-height: 1.6; max-width: 220px; margin-bottom: 20px; }
+    .footer-col h5 { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px; }
+    .footer-col a { display: block; color: #4A5A78; font-size: 13px; margin-bottom: 10px; transition: .2s; }
+    .footer-col a:hover { color: var(--saffron); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .footer-badge { border: 1px solid rgba(255,255,255,.12); color: #3A4D6A; padding: 4px 12px; border-radius: 99px; font-size: 11px; font-weight: 600; }
+
+    /* ── FLOATING CTA ── */
+    .float-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 90;
+      background: linear-gradient(135deg, var(--saffron), #FF9A5C);
+      color: #fff; border: none; border-radius: 999px; padding: 14px 22px;
+      font: 700 14px 'Plus Jakarta Sans', Inter; cursor: pointer;
+      box-shadow: 0 8px 28px rgba(255,107,53,.45);
+      display: flex; align-items: center; gap: 8px; transition: .25s;
+      opacity: 0; transform: translateY(20px);
+    }
+    .float-cta.show { opacity: 1; transform: translateY(0); }
+    .float-cta:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(255,107,53,.55); }
+
+    /* Dot-grid background overlay */
+    .dot-grid {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 28px 28px; pointer-events: none;
+    }
+
+    /* CTA section */
+    .cta-section {
+      background: linear-gradient(160deg, #050D1A 0%, #0B1F3A 50%, #091628 100%);
+      position: relative; overflow: hidden; text-align: center; padding: 100px 0;
+    }
+    .cta-section h2 { color: #fff; font-size: clamp(28px,4vw,44px); margin-bottom: 16px; }
+    .cta-section p { color: #7A90B4; font-size: 17px; margin-bottom: 36px; }
+    .cta-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    @media(max-width:860px) {
+      .pipeline-visual-row { grid-template-columns: 1fr; }
+      .pipeline-visual-img { display: none; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .steps-visual { grid-template-columns: 1fr 1fr; }
+    }
+    @media(max-width:540px) {
+      .testi-card { width: 300px; }
+      .impact-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .steps-visual { grid-template-columns: 1fr; }
+      .quote-banner { padding: 28px; }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- Progress bar -->
+  <div id="readProgress"></div>
+
+  <!-- Ticker / Announcement bar -->
+  <div class="ticker-wrap" id="tickerWrap">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="ticker-item">🚀 47 active pilots across departments</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">💰 ₹6.4 Cr disbursed via milestone escrow</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">🏗️ 312 DPIIT startups onboarded</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">🗺️ 19 districts scaling a validated solution</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">📜 No prior turnover requirement for DPIIT startups</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">⚖️ GFR Rule 173(i) compliant pilot contracts</span>
+      <span class="ticker-sep">●</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="ticker-item">🚀 47 active pilots across departments</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">💰 ₹6.4 Cr disbursed via milestone escrow</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">🏗️ 312 DPIIT startups onboarded</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">🗺️ 19 districts scaling a validated solution</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">📜 No prior turnover requirement for DPIIT startups</span>
+      <span class="ticker-sep">●</span>
+      <span class="ticker-item">⚖️ GFR Rule 173(i) compliant pilot contracts</span>
+      <span class="ticker-sep">●</span>
+    </div>
+  </div>
 
   <header>
     <div class="navbar">
@@ -2015,6 +2360,7 @@
         <button data-v="passport" id="tab-passport">Passport</button>
       </nav>
       <div class="auth-bar" id="authBar">
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
         <button class="btn-login" id="loginBtn" onclick="openLoginModal()">
           <span>🔐</span> Sign In
         </button>
@@ -2030,7 +2376,6 @@
               <div class="ud-name" id="menuName">Dept. of Rural Health, UP</div>
               <div class="ud-sub" id="menuSub">Authorized Nodal Officer</div>
             </div>
-
             <button class="ud-item logout" onclick="handleLogout()">🚪 Sign Out</button>
           </div>
         </div>
@@ -2048,6 +2393,7 @@
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
       <div class="hero-orb hero-orb-3"></div>
+      <div class="dot-grid"></div>
       <div class="wrap hero-grid">
         <div>
           <div class="hero-eyebrow"><span class="dot"></span>India's First Outcome-Based Procurement Sandbox</div>
@@ -2064,29 +2410,32 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
-            No prior turnover requirement · Milestone-gated escrow payments
+            No prior turnover requirement · Milestone-gated escrow · GFR Rule 173(i)
           </p>
+          <!-- Partner trust logos -->
+          <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+            <div style="font-size:11.5px;font-weight:600;color:#3A4D6A;letter-spacing:.06em;text-transform:uppercase;">Backed by:</div>
+            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px;color:#8AA3C0;font:600 12px Inter;">🏛️ DPIIT</div>
+            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px;color:#8AA3C0;font:600 12px Inter;">🇮🇳 GFR 2017</div>
+            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px;color:#8AA3C0;font:600 12px Inter;">🔒 Startup India</div>
+          </div>
         </div>
-        <div class="stat-grid">
-          <div class="stat-card">
-            <span class="icon">🚀</span>
-            <div class="num" id="c1">0</div>
-            <div class="lbl">Active pilots across departments</div>
-          </div>
-          <div class="stat-card">
-            <span class="icon">🏗️</span>
-            <div class="num" id="c2">0</div>
-            <div class="lbl">DPIIT startups onboarded</div>
-          </div>
-          <div class="stat-card">
-            <span class="icon">🗺️</span>
-            <div class="num" id="c3">0</div>
-            <div class="lbl">Districts scaling a validated solution</div>
-          </div>
-          <div class="stat-card">
-            <span class="icon">💰</span>
-            <div class="num">₹<span id="c4">0</span><span style="font-size:22px">Cr</span></div>
-            <div class="lbl">Disbursed via milestone escrow</div>
+        <!-- Hero Illustration -->
+        <div style="position:relative;">
+          <div class="hero-img-glow"></div>
+          <div class="hero-img-wrap">
+            <img src="hero_illustration.jpg" alt="NIRMAN — Government meets startup innovation" loading="eager">
+            <div class="hero-float-badge">
+              <span class="badge-icon">🚀</span>
+              <div class="badge-text">
+                <b>47 Active Pilots</b>
+                <span>Across 12 departments</span>
+              </div>
+            </div>
+            <div class="hero-float-badge-2">
+              <b>312+</b>
+              <span>DPIIT Startups</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2145,38 +2494,224 @@
     </section>
 
     <!-- ══ PIPELINE ══ -->
-    <section style="padding:80px 0;background:var(--navy);">
+    <section style="padding:80px 0;background:var(--navy);position:relative;overflow:hidden;">
+      <div class="dot-grid" style="opacity:.5;"></div>
       <div class="wrap">
-        <div class="kicker-pill" style="background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.4);">⚙️ The
-          process</div>
-        <div class="sec-head" style="max-width:640px;margin-bottom:0;">
-          <h2 style="color:#fff;">Eight stages, one thread</h2>
-          <p style="color:#7A90B4;">Every challenge moves through the same auditable sequence — from problem statement
-            to district-wide scale.</p>
+        <div class="kicker-pill" style="background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.4);">⚙️ The process</div>
+        <div class="pipeline-visual-row reveal">
+          <div>
+            <div class="sec-head" style="max-width:640px;margin-bottom:0;">
+              <h2 style="color:#fff;">Eight stages, one thread</h2>
+              <p style="color:#7A90B4;">Every challenge moves through the same auditable sequence — from problem statement to district-wide scale. Each step is logged, auditable, and carries forward to the next.</p>
+            </div>
+            <div id="pipeline" class="pipeline-track" style="margin-top:40px;"></div>
+          </div>
+          <div class="pipeline-visual-img">
+            <img src="pipeline_visual.jpg" alt="NIRMAN 8-stage procurement pipeline" style="border-radius:20px;">
+          </div>
         </div>
-        <div id="pipeline" class="pipeline-track" style="margin-top:40px;"></div>
       </div>
     </section>
 
     <!-- ══ FEATURES ══ -->
     <section class="wrap" style="padding:80px 0;">
-      <div class="kicker-pill">🛠️ How it works</div>
-      <div class="sec-head">
+      <div class="kicker-pill reveal">🛠️ How it works</div>
+      <div class="sec-head reveal reveal-delay-1">
         <h2>What makes the pathway work</h2>
         <p>Six mechanisms replace the usual points of failure in innovation procurement.</p>
       </div>
+      <div class="feature-img-wrap reveal reveal-delay-2">
+        <img src="features_banner.jpg" alt="NIRMAN's six core mechanisms" style="width:100%;height:100%;object-fit:cover;">
+      </div>
       <div class="grid3" id="features"></div>
+    </section>
+
+    <!-- ══ QUOTE BANNER ══ -->
+    <section class="wrap" style="padding:0 0 80px;">
+      <div class="quote-banner reveal">
+        <p>"A startup shouldn't need three years of turnover to solve a problem that exists today. NIRMAN makes the evidence the entry point — not the paperwork."</p>
+        <div class="quote-src">— Design principle behind NIRMAN's GFR Rule 173(i) pilot framework</div>
+      </div>
+    </section>
+
+    <!-- ══ HOW IT WORKS — 3 Steps ══ -->
+    <section class="wrap" style="padding:0 0 80px;">
+      <div class="kicker-pill reveal">📖 For founders & officials</div>
+      <div class="sec-head reveal reveal-delay-1">
+        <h2>Get started in three steps</h2>
+        <p>Whether you're a government department or a DPIIT startup, NIRMAN gets you to a real pilot in weeks, not years.</p>
+      </div>
+      <div class="steps-visual">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <span class="step-icon">🏛️</span>
+          <h4>Post an Outcome Challenge</h4>
+          <p>Government departments describe a real operational problem. The Problem Statement Doctor rewrites it into measurable, outcome-based KPIs — not vendor specs.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <span class="step-icon">🤝</span>
+          <h4>Match & Run a 6-Week Pilot</h4>
+          <p>DPIIT-recognized startups apply without prior-turnover barriers. A matched startup runs a paid 6-week sandbox with milestone-gated escrow payments.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <span class="step-icon">🛂</span>
+          <h4>Earn a Procurement Passport</h4>
+          <p>A verified pilot becomes a portable credential. Any department in India can adopt the validated solution without re-running evaluation from scratch.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ IMPACT NUMBERS ══ -->
+    <section class="impact-section">
+      <div class="wrap" style="padding:80px 24px;position:relative;z-index:1;">
+        <div class="kicker-pill" style="background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.4);" >📊 Impact at a glance</div>
+        <div class="sec-head" style="max-width:640px;" >
+          <h2 style="color:#fff;">Building India's innovation procurement infrastructure</h2>
+          <p style="color:#7A90B4;">Real pilots, real data, real impact — publicly logged and independently verified.</p>
+        </div>
+        <div class="impact-grid reveal">
+          <div class="impact-cell">
+            <div class="impact-icon">🚀</div>
+            <div class="impact-num"><span id="imp1">0</span></div>
+            <div class="impact-lbl">Active pilots across<br>departments</div>
+          </div>
+          <div class="impact-cell">
+            <div class="impact-icon">🏗️</div>
+            <div class="impact-num"><span id="imp2">0</span>+</div>
+            <div class="impact-lbl">DPIIT-recognized<br>startups onboarded</div>
+          </div>
+          <div class="impact-cell">
+            <div class="impact-icon">🗺️</div>
+            <div class="impact-num"><span id="imp3">0</span></div>
+            <div class="impact-lbl">Districts scaling<br>validated solutions</div>
+          </div>
+          <div class="impact-cell">
+            <div class="impact-icon">💰</div>
+            <div class="impact-num">₹<span id="imp4">0</span>Cr</div>
+            <div class="impact-lbl">Disbursed via<br>milestone escrow</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TESTIMONIALS ══ -->
+    <section class="testimonials section-dark" style="padding:80px 0;">
+      <div class="testimonials-bg"></div>
+      <div class="wrap" style="position:relative;z-index:1;">
+        <div class="kicker-pill" style="background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.4);">💬 Voices from the field</div>
+        <div class="sec-head">
+          <h2 style="color:#fff;">What participants say</h2>
+          <p style="color:#7A90B4;">From government officials to startup founders — how NIRMAN changed the game.</p>
+        </div>
+        <div class="testi-track" id="testiTrack">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"For the first time, we could evaluate a vendor on actual cold-chain performance, not on how old their company is. The escrow model meant we never paid for promises — only for results."</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background:linear-gradient(135deg,#185ADB,#4A90D9);">R</div>
+              <div>
+                <div class="name">Dr. R. Sharma</div>
+                <div class="role">Nodal Officer · Dept. of Rural Health, UP</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"We had zero chance with conventional tenders — we were only 18 months old. NIRMAN's DPIIT waiver got us into a real government pilot within weeks. That pilot became our national credential."</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background:linear-gradient(135deg,var(--saffron),#FFB347);">A</div>
+              <div>
+                <div class="name">Ananya Krishnan</div>
+                <div class="role">Co-Founder · AarambhX (Health-tech)</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"The Problem Statement Doctor was a revelation. It caught that our spec was biased toward an incumbent vendor and rewrote it around the outcome we actually needed. We got better applicants."</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background:linear-gradient(135deg,var(--emerald),#2ECC71);">P</div>
+              <div>
+                <div class="name">Priya Menon</div>
+                <div class="role">Deputy Director · Punjab Agriculture Dept.</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"The Procurement Passport meant Nagpur Municipal didn't need to run the whole evaluation again. They just looked at our UP pilot data, reviewed the escrow release trail, and adopted us in two weeks."</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background:linear-gradient(135deg,#8B5CF6,#A78BFA);">V</div>
+              <div>
+                <div class="name">Vikram Sood</div>
+                <div class="role">CEO · VaxWatch Systems</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <p class="testi-quote">"The transparency registry was key for us. Seeing that a previous attempt failed at IoT integration told us exactly what to avoid. We built our pilot around that learning."</p>
+            <div class="testi-author">
+              <div class="testi-avatar" style="background:linear-gradient(135deg,#EC4899,#F9A8D4);">M</div>
+              <div>
+                <div class="name">Meera Nair</div>
+                <div class="role">Founder · AgriSense Soil AI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-dots">
+          <div class="testi-dot active" onclick="scrollTesti(0)" id="dot-0"></div>
+          <div class="testi-dot" onclick="scrollTesti(1)" id="dot-1"></div>
+          <div class="testi-dot" onclick="scrollTesti(2)" id="dot-2"></div>
+          <div class="testi-dot" onclick="scrollTesti(3)" id="dot-3"></div>
+          <div class="testi-dot" onclick="scrollTesti(4)" id="dot-4"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PARTNER LOGOS ══ -->
+    <section class="wrap">
+      <div class="partners-strip">
+        <div class="label">Recognized frameworks &amp; backing</div>
+        <div class="partners-logos">
+          <div class="partner-logo">🏛️ DPIIT / Startup India</div>
+          <div class="partner-logo">📜 GFR 2017 Rule 173(i)</div>
+          <div class="partner-logo">⚖️ CVC Guidelines</div>
+          <div class="partner-logo">🔐 Milestone Escrow Protocol</div>
+          <div class="partner-logo">🌐 National Procurement Portal</div>
+        </div>
+      </div>
     </section>
 
     <!-- ══ REGISTRY ══ -->
     <section style="padding:80px 0;background:linear-gradient(160deg,#F7F5F2,var(--paper));">
       <div class="wrap">
-        <div class="kicker-pill">📋 Track record</div>
-        <div class="sec-head">
+        <div class="kicker-pill reveal">📋 Track record</div>
+        <div class="sec-head reveal reveal-delay-1">
           <h2>Transparency registry</h2>
           <p>Every pilot is logged publicly — including the ones that didn't work, and why.</p>
         </div>
-        <div class="reg-list" id="registry"></div>
+        <div class="reg-list reveal reveal-delay-2" id="registry"></div>
+      </div>
+    </section>
+
+    <!-- ══ CTA SECTION ══ -->
+    <section class="cta-section reveal">
+      <div class="dot-grid"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+      <div class="wrap" style="position:relative;z-index:1;">
+        <div class="hero-eyebrow" style="display:inline-flex;"><span class="dot"></span>Join the sandbox</div>
+        <h2>Ready to pilot a real solution<br>for real government demand?</h2>
+        <p>Whether you're a department with a problem or a startup with an answer — NIRMAN is your pathway.</p>
+        <div class="cta-btn-row">
+          <button class="btn btn-primary" style="padding:16px 32px;font-size:16px;" onclick="openLoginModal('dept')">🏛️ I'm a Government Department</button>
+          <button class="btn btn-ghost" style="padding:16px 32px;font-size:16px;" onclick="openLoginModal('startup')">🚀 I'm a DPIIT Startup</button>
+        </div>
+        <p style="color:#3A4D6A;font-size:13px;margin-top:20px;">No prior turnover requirement · Free to join · DPIIT recognized startups only</p>
       </div>
     </section>
 
@@ -2493,14 +3028,56 @@
     </section>
   </div>
 
+  <!-- Floating CTA -->
+  <button class="float-cta" id="floatCta" onclick="openLoginModal()">
+    🚀 <span>Get Started</span>
+  </button>
+
   <footer>
-    <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-      <div>
-        <div style="font-family:'Syne',Fraunces,serif;font-weight:800;font-size:18px;color:#fff;letter-spacing:-.01em;">
-          NIRMAN</div>
-        <div style="color:#4A5A78;font-size:12.5px;margin-top:3px;">From Innovation to Impact</div>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>NIRMAN</h3>
+          <p>India's first outcome-based public procurement sandbox. From innovation to impact — one verified pilot at a time.</p>
+          <div class="footer-badges">
+            <span class="footer-badge">🏛️ DPIIT</span>
+            <span class="footer-badge">🔒 GFR 2017</span>
+            <span class="footer-badge">🇮🇳 Startup India</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Platform</h5>
+          <a href="#" onclick="go('home');return false;">Home</a>
+          <a href="#" onclick="go('studio');return false;">Challenge Studio</a>
+          <a href="#" onclick="go('discovery');return false;">Discovery</a>
+          <a href="#" onclick="go('pilot');return false;">Pilot Workspace</a>
+          <a href="#" onclick="go('passport');return false;">Passport</a>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <a href="#">GFR Rule 173(i)</a>
+          <a href="#">Startup India Guidelines</a>
+          <a href="#">Escrow Protocol</a>
+          <a href="#">Evaluation Rubric</a>
+          <a href="#">Transparency Registry</a>
+        </div>
+        <div class="footer-col">
+          <h5>About</h5>
+          <a href="#">About NIRMAN</a>
+          <a href="#">Policy Framework</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
       </div>
-      <div style="color:#2E3D56;font-size:12px;">Public Procurement Innovation Sandbox &middot; India</div>
+      <div class="footer-bottom">
+        <div style="color:#2E3D56;font-size:12px;">© 2026 NIRMAN · Public Procurement Innovation Sandbox · India</div>
+        <div class="footer-badges">
+          <span class="footer-badge">Outcome-based</span>
+          <span class="footer-badge">Milestone Escrow</span>
+          <span class="footer-badge">DPIIT Compliant</span>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -3127,6 +3704,122 @@
 
     // Boot authentication
     initAuth();
+
+    /* ═══════════════════════════════════
+       ENHANCED UI SCRIPTS
+    ═══════════════════════════════════ */
+
+    // 1. Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const el = document.documentElement;
+      const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+      document.getElementById('readProgress').style.width = pct + '%';
+    });
+
+    // 2. Floating CTA show/hide
+    window.addEventListener('scroll', () => {
+      const floatCta = document.getElementById('floatCta');
+      if (floatCta) {
+        if (window.scrollY > 400) floatCta.classList.add('show');
+        else floatCta.classList.remove('show');
+      }
+    });
+
+    // 3. Theme Toggle
+    (function() {
+      const btn = document.getElementById('themeToggle');
+      if (!btn) return;
+      const saved = localStorage.getItem('nirman_theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+        btn.textContent = saved === 'dark' ? '☀️' : '🌙';
+      }
+      btn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme');
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('nirman_theme', next);
+        btn.textContent = next === 'dark' ? '☀️' : '🌙';
+      });
+    })();
+
+    // 4. Scroll Reveal via IntersectionObserver
+    (function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+
+    // 5. Impact counters (triggered by IntersectionObserver)
+    (function() {
+      const impCounts = [
+        { id: 'imp1', target: 47, decimals: 0 },
+        { id: 'imp2', target: 312, decimals: 0 },
+        { id: 'imp3', target: 19, decimals: 0 },
+        { id: 'imp4', target: 6.4, decimals: 1 },
+      ];
+      let fired = false;
+      const section = document.querySelector('.impact-section');
+      if (!section) return;
+      const obs = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !fired) {
+          fired = true;
+          impCounts.forEach(({ id, target, decimals }) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let start = 0, dur = 1400, t0 = null;
+            function frame(t) {
+              if (!t0) t0 = t;
+              const p = Math.min((t - t0) / dur, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = decimals ? (target * eased).toFixed(decimals) : Math.floor(target * eased);
+              if (p < 1) requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+          });
+        }
+      }, { threshold: 0.3 });
+      obs.observe(section);
+    })();
+
+    // 6. Testimonial dot navigation
+    function scrollTesti(idx) {
+      const track = document.getElementById('testiTrack');
+      if (!track) return;
+      const card = track.children[idx];
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      document.querySelectorAll('.testi-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    // Auto-advance testimonial dots on scroll
+    (function() {
+      const track = document.getElementById('testiTrack');
+      if (!track) return;
+      track.addEventListener('scroll', () => {
+        const cards = track.children;
+        let closest = 0, minDist = Infinity;
+        for (let i = 0; i < cards.length; i++) {
+          const dist = Math.abs(cards[i].getBoundingClientRect().left - track.getBoundingClientRect().left);
+          if (dist < minDist) { minDist = dist; closest = i; }
+        }
+        document.querySelectorAll('.testi-dot').forEach((d, i) => d.classList.toggle('active', i === closest));
+      });
+    })();
+
+    // 7. Feature card mouse-spotlight effect
+    document.querySelectorAll('.feature').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - rect.left) / rect.width * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - rect.top) / rect.height * 100) + '%');
+      });
+    });
   </script>
 
   <!-- LOGIN MODAL -->
