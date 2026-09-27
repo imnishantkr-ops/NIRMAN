@@ -2193,15 +2193,15 @@
   <!-- Announcement Ticker -->
   <div class="ticker-wrap">
     <div class="ticker-track">
-      <span class="ticker-item"><b>48 active sandbox pilots</b> across departments</span>
+      <span class="ticker-item"><b id="tick-pilots">48 active sandbox pilots</b> across departments</span>
       <span class="ticker-sep">●</span>
-      <span class="ticker-item"><b>₹42.8 Cr</b> disbursed via milestone escrow</span>
+      <span class="ticker-item"><b id="tick-escrow">₹42.8 Cr</b> disbursed via milestone escrow</span>
       <span class="ticker-sep">●</span>
-      <span class="ticker-item"><b>184 DPIIT startups</b> onboarded</span>
+      <span class="ticker-item"><b id="tick-startups">184 DPIIT startups</b> onboarded</span>
       <span class="ticker-sep">●</span>
-      <span class="ticker-item"><b>75 districts scaling</b> validated solutions</span>
+      <span class="ticker-item"><b id="tick-districts">75 districts scaling</b> validated solutions</span>
       <span class="ticker-sep">●</span>
-      <span class="ticker-item"><b>0 prior turnover requirement</b> under GFR 2017 Rule 173(i)</span>
+      <span class="ticker-item"><b>₹0 prior turnover requirement</b> under GFR 2017 Rule 173(i)</span>
       <span class="ticker-sep">●</span>
       <span class="ticker-item"><b>100% outcome-gated</b> pilot contracts</span>
       <span class="ticker-sep">●</span>
@@ -3423,13 +3423,13 @@
 
         <div style="font-size:12px;font-weight:700;letter-spacing:.06em;color:#A3B5D0;margin-bottom:10px;text-transform:uppercase;">Verified Ground Deployments</div>
         <div style="display:flex;flex-direction:column;gap:8px;font-size:12.5px;">
-          <div style="display:flex;justify-content:space-between;background:rgba(255,255,255,.04);padding:8px 12px;border-radius:8px;">
+          <div style="display:flex;justify-content:space-between;background:rgba(255,255,255,.04);padding:8px 12px;border-radius:8px;cursor:pointer;" onclick="go('decision')" title="View Decision Record">
             <span>🏛️ Dept. of Rural Health, UP (12 PHCs)</span>
-            <span style="color:var(--emerald);font-weight:600;">Verified 3.8% Wastage ✓</span>
+            <span style="color:var(--emerald);font-weight:600;">Verified 3.8% Wastage ✓ <span style="font-size:10px;opacity:.7;">→ Decision Record</span></span>
           </div>
-          <div style="display:flex;justify-content:space-between;background:rgba(255,255,255,.04);padding:8px 12px;border-radius:8px;">
+          <div style="display:flex;justify-content:space-between;background:rgba(255,255,255,.04);padding:8px 12px;border-radius:8px;cursor:pointer;" onclick="go('decision')" title="View Decision Record">
             <span>🏛️ Nagpur Municipal Corporation</span>
-            <span style="color:var(--emerald);font-weight:600;">Verified Scale-Up ✓</span>
+            <span style="color:var(--emerald);font-weight:600;">Verified Scale-Up ✓ <span style="font-size:10px;opacity:.7;">→ Decision Record</span></span>
           </div>
         </div>
       </div>
@@ -3664,6 +3664,55 @@
     </div>
   </div>
 
+  <!-- GFR 173(i) EXPLAINER MODAL -->
+  <div class="modal-overlay" id="gfrModal" onclick="if(event.target===this)document.getElementById('gfrModal').classList.remove('active')">
+    <div class="modal-card" style="max-width:560px;">
+      <div class="modal-header">
+        <div>
+          <h3 style="font-size:17px;">GFR 2017 Rule 173(i) — Startup Turnover Waiver</h3>
+          <p style="font-size:12px;color:var(--slate);">General Financial Rules, Government of India</p>
+        </div>
+        <button class="modal-close" onclick="document.getElementById('gfrModal').classList.remove('active')">×</button>
+      </div>
+      <div class="modal-body">
+        <div style="background:var(--paper);border-left:4px solid var(--saffron);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:18px;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--saffron-dark);margin-bottom:4px;">Rule Text (Paraphrased)</div>
+          <p style="font-size:13px;line-height:1.6;margin:0;">"Prior experience and prior turnover shall not be a criterion for recognising DPIIT-certified startups as eligible bidders, provided quality and technical standards are satisfied."</p>
+        </div>
+        <div style="font-size:13px;line-height:1.7;color:var(--ink-soft);">
+          <p><b>Why NIRMAN cites this rule:</b> Every challenge on the NIRMAN platform is posted as an outcome-based challenge (not an L1 tender). A startup applying for a pilot needs only a valid DPIIT certificate — no 3-year balance sheet, no prior government contract history.</p>
+          <p style="margin-top:10px;"><b>Supplementary:</b> Ministry of Finance OM F.20/2/2014-PPD(Pt.) extends this waiver to all Central and State procurement procedures where DPIIT recognition is verified. NIRMAN's automated screening gate verifies certificate numbers directly against the DPIIT registry schema.</p>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+          <button class="btn btn-primary btn-sm" onclick="go('screening');document.getElementById('gfrModal').classList.remove('active')">See Live Screening Gate →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESCROW PROTOCOL MODAL -->
+  <div class="modal-overlay" id="escrowModal" onclick="if(event.target===this)document.getElementById('escrowModal').classList.remove('active')">
+    <div class="modal-card" style="max-width:540px;">
+      <div class="modal-header">
+        <div>
+          <h3 style="font-size:17px;">Milestone Escrow Protocol</h3>
+          <p style="font-size:12px;color:var(--slate);">How NIRMAN disburses pilot funds</p>
+        </div>
+        <button class="modal-close" onclick="document.getElementById('escrowModal').classList.remove('active')">×</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;">
+          <div style="padding:10px 14px;background:var(--paper);border-radius:10px;border-left:3px solid var(--navy-3);"><b>1. Startup submits evidence</b> — telemetry logs, field officer sign-off, and sensor readings uploaded via Evidence Modal. Escrow remains locked.</div>
+          <div style="padding:10px 14px;background:var(--paper);border-radius:10px;border-left:3px solid #3B82F6;"><b>2. Independent Validator reviews</b> — STQC/IIT-empanelled auditor checks three items: evidence reviewed, matches KPI target, no discrepancies. Only they can confirm.</div>
+          <div style="padding:10px 14px;background:var(--paper);border-radius:10px;border-left:3px solid var(--emerald);"><b>3. Escrow disbursed</b> — only after validator confirms. Government nodal officer triggers PFMS release. SHA-256 audit hash recorded.</div>
+        </div>
+        <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+          <button class="btn btn-primary btn-sm" onclick="go('pilot');document.getElementById('escrowModal').classList.remove('active')">See Pilot Workspace →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- FOOTER -->
@@ -3696,10 +3745,10 @@
         </div>
         <div class="footer-col">
           <h5>Policy &amp; Legal</h5>
-          <a href="#">GFR Rule 161(iv)</a>
-          <a href="#">Milestone Escrow Protocol</a>
-          <a href="#">STQC Validation Norms</a>
-          <a href="#">DPDP Act 2023 Guidelines</a>
+          <a href="#" onclick="document.getElementById('gfrModal').classList.add('active');return false;">GFR Rule 173(i) &amp; 161(iv)</a>
+          <a href="#" onclick="document.getElementById('escrowModal').classList.add('active');return false;">Milestone Escrow Protocol</a>
+          <a href="#" onclick="go('validation');return false;">STQC Validation Norms</a>
+          <a href="#" onclick="go('evaluate');return false;">Evaluation Rubric (Template 2)</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -3713,6 +3762,9 @@
        SCRIPTS & ANIMATIONS
        ═══════════════════════════════════════════════════════════════════════════ -->
   <script>
+    // ── SINGLE SOURCE OF TRUTH: impact stats (ticker + dashboard must match) ──
+    const NIRMAN_STATS = { pilots: 48, startups: 184, districts: 75, escrowCr: 42.8 };
+
     const allViews = [
       'home', 'gov-dashboard', 'studio', 'discovery', 'screening',
       'evaluate', 'pilot', 'measurement', 'validation', 'decision',
@@ -3742,10 +3794,10 @@
     ];
 
     const milestonesData = [
-      { id: 1, title: 'Baseline Calibration & 12 PHC Delivery', amt: '₹3,50,000', status: 'released', statusText: '✓ Released' },
-      { id: 2, title: 'Week-2 Telemetry & Cold-Chain Stream', amt: '₹5,50,000', status: 'evidence', statusText: '⏳ Evidence Submitted' },
-      { id: 3, title: 'Week-4 Spoilage & Anomaly Stress Test', amt: '₹4,00,000', status: 'locked', statusText: '🔒 Locked in Escrow' },
-      { id: 4, title: 'Final 6-Week Validation & Ground Handover', amt: '₹5,00,000', status: 'locked', statusText: '🔒 Locked in Escrow' }
+      { id: 1, title: 'Baseline Calibration & 12 PHC Delivery', amt: '₹3,50,000', status: 'released', statusText: '✓ Verified & Paid', validator: 'Prof. Dr. M. Sundaram (IIT Delhi / STQC)' },
+      { id: 2, title: 'Week-2 Telemetry & Cold-Chain Stream', amt: '₹5,50,000', status: 'evidence', statusText: '⏳ Evidence Submitted', validator: null },
+      { id: 3, title: 'Week-4 Spoilage & Anomaly Stress Test', amt: '₹4,00,000', status: 'locked', statusText: '🔒 Locked', validator: null },
+      { id: 4, title: 'Final 6-Week Validation & Ground Handover', amt: '₹5,00,000', status: 'locked', statusText: '🔒 Locked', validator: null }
     ];
 
     const auditLog = [
@@ -3860,21 +3912,47 @@
       }, { threshold: 0.1 });
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      // Impact Counters Observer
+      // Impact Counters — single source of truth via NIRMAN_STATS
+      // Guarantee: set final values immediately so they're never 0 on first paint
+      function fireImpactCounters() {
+        animateCount('imp1', NIRMAN_STATS.pilots);
+        animateCount('imp2', NIRMAN_STATS.startups);
+        animateCount('imp3', NIRMAN_STATS.districts);
+        animateCount('imp4', NIRMAN_STATS.escrowCr, 1);
+        // Also sync ticker spans
+        const tp = document.getElementById('tick-pilots');
+        const te = document.getElementById('tick-escrow');
+        const ts = document.getElementById('tick-startups');
+        const td = document.getElementById('tick-districts');
+        if (tp) tp.textContent = NIRMAN_STATS.pilots + ' active sandbox pilots';
+        if (te) te.textContent = '₹' + NIRMAN_STATS.escrowCr.toFixed(1) + ' Cr';
+        if (ts) ts.textContent = NIRMAN_STATS.startups + ' DPIIT startups';
+        if (td) td.textContent = NIRMAN_STATS.districts + ' districts scaling';
+      }
+      // Set fallback values immediately (never show 0)
+      ['imp1','imp2','imp3','imp4'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = id === 'imp4' ? NIRMAN_STATS.escrowCr.toFixed(1)
+          : id === 'imp1' ? NIRMAN_STATS.pilots
+          : id === 'imp2' ? NIRMAN_STATS.startups
+          : NIRMAN_STATS.districts;
+      });
       const impactSection = document.querySelector('.impact-section');
       if (impactSection) {
         let fired = false;
         const impObs = new IntersectionObserver((entries) => {
           if (entries[0].isIntersecting && !fired) {
             fired = true;
-            animateCount('imp1', 48);
-            animateCount('imp2', 184);
-            animateCount('imp3', 75);
-            animateCount('imp4', 42.8, 1);
+            fireImpactCounters();
           }
-        }, { threshold: 0.25 });
+        }, { threshold: 0.1 }); // lowered from 0.25 so off-screen sections still fire
         impObs.observe(impactSection);
       }
+      // Fallback: also fire after 800ms regardless (handles hidden/off-screen section)
+      setTimeout(() => {
+        if (document.getElementById('imp1').textContent === String(NIRMAN_STATS.pilots)) return;
+        fireImpactCounters();
+      }, 800);
 
       // Feature cards mouse spotlight
       document.querySelectorAll('.feature').forEach(card => {
@@ -4040,30 +4118,88 @@
 
     function renderMilestones() {
       const grid = document.getElementById('milestoneCardsGrid');
+      const isValidator = currentUser && (currentUser.role === 'dept' || currentUser.role === 'validator');
       if (grid) {
-        grid.innerHTML = milestonesData.map(m => `
-          <div class="panel" style="background:${m.status === 'released' ? 'var(--emerald-light)' : 'var(--card)'};">
+        grid.innerHTML = milestonesData.map(m => {
+          const bgColor = m.status === 'released' ? 'var(--emerald-light)' : m.status === 'validated' ? 'rgba(59,130,246,.08)' : 'var(--card)';
+          const badgeClass = m.status === 'released' ? 'ok' : m.status === 'evidence' ? 'warning' : m.status === 'validated' ? 'gov' : 'gov';
+          // Validator action card for 'evidence' status — only visible to govt/validator
+          const validatorCard = (m.status === 'evidence' && isValidator) ? `
+            <div style="margin-top:12px;padding:12px;background:var(--paper);border:1px solid rgba(59,130,246,.3);border-radius:10px;">
+              <div style="font-size:11.5px;font-weight:700;color:#3B82F6;margin-bottom:8px;">🔬 Independent Validator Action Required</div>
+              <div style="display:flex;flex-direction:column;gap:5px;font-size:12px;margin-bottom:10px;">
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="checkbox" id="vc1-${m.id}" checked> Evidence package reviewed</label>
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="checkbox" id="vc2-${m.id}" checked> Matches milestone KPI target</label>
+                <label style="display:flex;align-items:center;gap:6px;cursor:pointer;"><input type="checkbox" id="vc3-${m.id}" checked> No data discrepancies found</label>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                <button class="btn btn-emerald btn-sm" onclick="validatorConfirm(${m.id})">✓ Confirm &amp; Release Escrow</button>
+                <button class="btn btn-outline btn-sm" style="border-color:var(--crimson);color:var(--crimson);" onclick="validatorFlag(${m.id})">⚑ Flag Discrepancy</button>
+              </div>
+            </div>` : '';
+          const validatedBadge = m.status === 'validated' ? `<div style="font-size:11px;color:#3B82F6;margin-top:6px;">🔬 Validated by ${m.validator || 'Independent Validator'} — awaiting disbursement</div>` : '';
+          return `
+          <div class="panel" style="background:${bgColor};transition:background .3s;">
             <div style="font-size:11px;font-weight:700;color:var(--slate);margin-bottom:4px;">MILESTONE #${m.id}</div>
             <h4 style="font-size:14.5px;margin-bottom:6px;">${m.title}</h4>
             <div style="font-family:'Syne',serif;font-size:20px;font-weight:800;margin-bottom:10px;">${m.amt}</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <span class="badge-tag ${m.status === 'released' ? 'ok' : (m.status === 'evidence' ? 'warning' : 'gov')}">${m.statusText}</span>
-              ${m.status === 'evidence' ? `<button class="btn btn-emerald btn-sm" onclick="disburseEscrow(${m.id})">Release Escrow ⚡</button>` : ''}
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+              <span class="badge-tag ${badgeClass}">${m.statusText}</span>
+              ${m.status === 'validated' && isValidator ? `<button class="btn btn-emerald btn-sm" onclick="disburseEscrow(${m.id})">💰 Disburse Escrow</button>` : ''}
             </div>
-          </div>
-        `).join('');
+            ${validatedBadge}
+            ${validatorCard}
+            ${m.status === 'released' && m.validator ? `<div style="font-size:11px;color:var(--emerald);margin-top:6px;">✓ Confirmed by ${m.validator}</div>` : ''}
+          </div>`;
+        }).join('');
       }
     }
 
     function disburseEscrow(id) {
       const m = milestonesData.find(x => x.id === id);
+      if (!m || m.status !== 'validated') {
+        showToast('⚠️ Escrow can only be disbursed after Independent Validator confirmation.', 'warning');
+        return;
+      }
+      m.status = 'released';
+      m.statusText = '✓ Verified & Paid';
+      renderMilestones();
+      auditLog.unshift({ icon: '💰', text: `Milestone #${id} Escrow ${m.amt} disbursed to AarambhX after independent validation.`, time: 'Just now' });
+      renderGovDashboard();
+      showToast(`💰 Escrow ${m.amt} disbursed — independently validated before release.`, 'success');
+    }
+
+    function validatorConfirm(id) {
+      const c1 = document.getElementById('vc1-' + id)?.checked;
+      const c2 = document.getElementById('vc2-' + id)?.checked;
+      const c3 = document.getElementById('vc3-' + id)?.checked;
+      if (!c1 || !c2 || !c3) {
+        showToast('⚠️ All three checklist items must be confirmed before validation.', 'warning');
+        return;
+      }
+      const m = milestonesData.find(x => x.id === id);
       if (m) {
-        m.status = 'released';
-        m.statusText = '✓ Released';
+        m.status = 'validated';
+        m.statusText = '🔬 Independently Validated';
+        m.validator = currentUser ? currentUser.name : 'Independent Validator';
         renderMilestones();
-        auditLog.unshift({ icon: '💰', text: `Milestone #${id} Escrow ${m.amt} disbursed to AarambhX.`, time: 'Just now' });
+        auditLog.unshift({ icon: '🔬', text: `Milestone #${id} independently validated by ${m.validator}. Disbursement authorized.`, time: 'Just now' });
         renderGovDashboard();
-        showToast(`💰 Escrow ${m.amt} disbursed to startup bank account under GFR 173!`, 'success');
+        showToast('🔬 Evidence confirmed. Milestone moves to Validated — escrow can now be disbursed.', 'success');
+      }
+    }
+
+    function validatorFlag(id) {
+      const reason = window.prompt('Describe the discrepancy found in the evidence (required):');
+      if (!reason || !reason.trim()) return;
+      const m = milestonesData.find(x => x.id === id);
+      if (m) {
+        m.status = 'flagged';
+        m.statusText = '⚑ Discrepancy Flagged';
+        renderMilestones();
+        auditLog.unshift({ icon: '⚑', text: `Milestone #${id} flagged by validator: "${reason.trim()}"`, time: 'Just now' });
+        renderGovDashboard();
+        showToast('⚑ Discrepancy logged. Startup notified to resubmit corrected evidence.', 'warning');
       }
     }
 
@@ -4292,9 +4428,15 @@
     function closeEvidenceModal() { document.getElementById('evidenceModal').classList.remove('active'); }
     function confirmEvidenceSubmit() {
       closeEvidenceModal();
-      showToast('📤 Milestone evidence uploaded!', 'success');
-      const m = milestonesData.find(x => x.id === 2);
-      if (m) { m.status = 'evidence'; m.statusText = '⏳ Evidence Submitted'; renderMilestones(); }
+      const m = milestonesData.find(x => x.status === 'locked');
+      if (m) {
+        m.status = 'evidence';
+        m.statusText = '⏳ Evidence Submitted';
+        auditLog.unshift({ icon: '📤', text: `Evidence submitted for Milestone #${m.id} — awaiting independent validator review before escrow release.`, time: 'Just now' });
+        renderMilestones();
+        renderGovDashboard();
+      }
+      showToast('📤 Evidence submitted. Escrow stays locked until an Independent Validator confirms the data.', 'info');
     }
 
     function setStudioStep(s) {
