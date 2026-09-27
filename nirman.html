@@ -7,7 +7,7 @@
   <title>NIRMAN — From Innovation to Impact | India's Procurement Sandbox</title>
   <meta name="description" content="NIRMAN is India's first outcome-based public procurement sandbox connecting government departments with DPIIT-recognized startups through transparent, milestone-gated pilot programs.">
   <meta property="og:title" content="NIRMAN — From Innovation to Impact">
-  <meta property="og:description" content="India's first outcome-based procurement sandbox. No prior turnover required under GFR Rule 173(i).">
+  <meta property="og:description" content="A proposed outcome-based procurement sandbox workflow for public innovation under SIH PS26136.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -1773,7 +1773,7 @@
       border-color: #2A3C5E;
     }
     .govt-order-document::before {
-      content: 'OFFICIAL RECORD / GFR 173(i) SANCTION';
+      content: 'SIMULATED DOCUMENT — DEMO ONLY';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -2222,6 +2222,21 @@
   </div>
 
   <!-- NAVBAR -->
+  <div class="demo-top-strip" style="background:#0F172A;border-bottom:1px solid #1E293B;padding:6px 16px;font-size:12px;color:#94A3B8;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:relative;z-index:1001;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="display:inline-block;padding:2px 6px;border-radius:4px;background:rgba(255,107,53,0.15);color:#FF6B35;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:0.06em;">Prototype Demonstration</span>
+      <span>SIH 2026 PS26136 · Proposed Public Innovation Procurement Sandbox Workflow</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:11.5px;">
+      <span style="color:#64748B;">• Illustrative Data &amp; Simulated Environment</span>
+      <button onclick="startJudgeTour()" style="background:#FF6B35;color:#fff;border:none;padding:2px 10px;border-radius:4px;cursor:pointer;font-weight:600;font-size:11px;display:flex;align-items:center;gap:4px;">
+        ⚖️ 3-Min Judge Demo Tour
+      </button>
+      <button onclick="resetDemoData()" style="background:transparent;border:1px solid #334155;color:#94A3B8;padding:2px 8px;border-radius:4px;cursor:pointer;font-size:11px;">
+        🔄 Reset Demo
+      </button>
+    </div>
+  </div>
   <header>
     <div class="navbar">
       <div class="brand" onclick="handleBrandClick()">
@@ -2246,6 +2261,8 @@
         <button data-v="decision" id="tab-decision">Scale Decision</button>
         <button data-v="passport" id="tab-passport">Passport</button>
         <button data-v="scaleup" id="tab-scaleup">Marketplace</button>
+        <button data-v="traceability" id="tab-traceability">PS Traceability</button>
+        <button data-v="architecture" id="tab-architecture">Architecture</button>
       </nav>
 
       <div class="nav-actions">
@@ -2358,21 +2375,22 @@
       <div class="dot-grid"></div>
       <div class="wrap hero-grid">
         <div>
-          <div class="hero-eyebrow"><span class="dot"></span>India's First Outcome-Based Procurement Sandbox</div>
+          <div class="hero-eyebrow"><span class="dot"></span>A Proposed Outcome-Based Procurement Workflow for Government–Startup Innovation</div>
           <h1 class="hero-h1-highlight">
-            <span class="hero-hl-line1">WHERE STARTUPS MEET</span><br>
-            <span class="hero-hl-badge"><span class="hero-hl-line2">GOVERNMENT DEMAND.</span></span>
+            <span class="hero-hl-line1">NIRMAN</span><br>
+            <span class="hero-hl-badge"><span class="hero-hl-line2">FROM INNOVATION TO IMPACT</span></span>
           </h1>
-          <p class="lead">Departments post outcome-based challenges. Startups pilot without prior-turnover barriers. Milestones release through escrow. One verified pilot becomes a national passport.</p>
+          <p class="lead">A structured government–startup pathway to identify operational challenges, discover eligible solutions, run controlled pilots, measure verifiable outcomes, and support evidence-based scale-up decisions.</p>
           <div class="cta-row">
-            <button class="btn btn-primary" onclick="handleHeroPrimary()">Access Sandbox Portal →</button>
-            <button class="btn btn-ghost" onclick="go('discovery')">Explore Open Pilots</button>
+            <button class="btn btn-primary" onclick="handleHeroPrimary()">Explore Demo →</button>
+            <button class="btn btn-ghost" onclick="go('discovery')">View Procurement Journey</button>
+            <button class="btn btn-outline" onclick="startJudgeTour()" style="border-color:rgba(255,107,53,0.4);color:var(--saffron);">⚖️ 3-Min Tour</button>
           </div>
           <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-            <span style="font-size:11.5px;color:#8E9FB8;font-weight:600;text-transform:uppercase;">Statutory Compliance:</span>
-            <span class="badge-tag gov" style="background:rgba(255,255,255,.08);color:#C7CEE2;border-color:rgba(255,255,255,.15);">DPIIT Recognized</span>
-            <span class="badge-tag gov" style="background:rgba(255,255,255,.08);color:#C7CEE2;border-color:rgba(255,255,255,.15);">GFR 2017 Rule 173(i)</span>
-            <span class="badge-tag gov" style="background:rgba(255,255,255,.08);color:#C7CEE2;border-color:rgba(255,255,255,.15);">Milestone Escrow Architecture</span>
+            <span style="font-size:11.5px;color:#8E9FB8;font-weight:600;text-transform:uppercase;">Procurement Rule Alignment:</span>
+            <span class="badge-tag gov" style="background:rgba(255,255,255,.08);color:#C7CEE2;border-color:rgba(255,255,255,.15);">DPIIT Framework Relaxation</span>
+            <span class="badge-tag gov" style="background:rgba(255,255,255,.08);color:#C7CEE2;border-color:rgba(255,255,255,.15);">Designed for GFR 173(i) Alignment</span>
+            <span class="badge-tag gov" style="background:rgba(255,255,255,.08);color:#C7CEE2;border-color:rgba(255,255,255,.15);">Milestone Payment Workflow</span>
           </div>
         </div>
         <div>
@@ -2382,13 +2400,13 @@
             <div class="hero-float-badge">
               <span class="badge-icon">✓</span>
               <div class="badge-text">
-                <b>48 Active Pilots</b>
+                <b>48 Active Pilots <span style="font-size:9.5px;color:var(--saffron);font-weight:600;">(Demo)</span></b>
                 <span>Across 14 departments</span>
               </div>
             </div>
             <div class="hero-float-badge-2">
-              <b>184+</b>
-              <span>DPIIT Startups</span>
+              <b>184+ <span style="font-size:9.5px;color:var(--saffron);font-weight:600;">(Demo)</span></b>
+              <span>Screened Startups</span>
             </div>
           </div>
         </div>
@@ -2400,15 +2418,146 @@
       <div class="wrap">
         <div class="trust-item">Department-led outcome challenges</div>
         <div class="trust-item" style="opacity:.3;">•</div>
-        <div class="trust-item">Milestone escrow disbursement</div>
+        <div class="trust-item">Milestone-based payment workflow</div>
         <div class="trust-item" style="opacity:.3;">•</div>
-        <div class="trust-item">GFR 2017 Rule 173(i) waiver</div>
+        <div class="trust-item">Designed for GFR 173(i) alignment</div>
         <div class="trust-item" style="opacity:.3;">•</div>
-        <div class="trust-item">Independent STQC validation</div>
+        <div class="trust-item">Independent domain validation</div>
         <div class="trust-item" style="opacity:.3;">•</div>
-        <div class="trust-item">Portable procurement passport</div>
+        <div class="trust-item">Demonstration evidence record</div>
       </div>
     </div>
+    <!-- ══ THE 9-STAGE LIFECYCLE NAVIGATION STRIP ══ -->
+    <section class="wrap" style="padding:32px 0 20px;">
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 24px;box-shadow:0 8px 24px rgba(0,0,0,0.04);">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
+          <div>
+            <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--saffron);">The Core Innovation Procurement Lifecycle</span>
+            <h3 style="font-size:17px;margin:2px 0 0 0;color:var(--navy);">End-to-End Governance: From Problem Definition to Scale-Up Assessment</h3>
+          </div>
+          <span class="badge-tag ok" style="font-size:11px;">PS26136 Complete Workflow</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(9, 1fr);gap:8px;text-align:center;" class="lifecycle-track">
+          <div onclick="go('studio')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 1</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Identify</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Studio</div>
+          </div>
+          <div onclick="go('discovery')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 2</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Discover</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Matching</div>
+          </div>
+          <div onclick="go('screening')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 3</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Screen</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Eligibility</div>
+          </div>
+          <div onclick="go('evaluate')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 4</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Evaluate</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Jury Rubric</div>
+          </div>
+          <div onclick="go('pilot')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 5</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Pilot</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Milestones</div>
+          </div>
+          <div onclick="go('measurement')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 6</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Measure</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Target vs Act.</div>
+          </div>
+          <div onclick="go('validation')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 7</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Validate</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Independent</div>
+          </div>
+          <div onclick="go('decision')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 8</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Decide</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Official Rec.</div>
+          </div>
+          <div onclick="go('scaleup')" style="cursor:pointer;padding:10px 4px;border-radius:8px;background:var(--paper);border:1px solid var(--border);transition:0.2s;" onmouseover="this.style.borderColor='var(--saffron)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:10px;font-weight:700;color:var(--slate);">STAGE 9</div>
+            <div style="font-weight:700;font-size:12px;color:var(--navy);margin-top:2px;">Scale</div>
+            <div style="font-size:10px;color:var(--slate);margin-top:2px;">Assessment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ WHY NIRMAN? THREE STAKEHOLDER CARDS ══ -->
+    <section class="wrap" style="padding:20px 0 40px;">
+      <div class="kicker-pill reveal">Designed Around Stakeholder Needs</div>
+      <div class="sec-head reveal reveal-delay-1">
+        <h2>Built for Public Accountability &amp; Startup Agility</h2>
+        <p>A balanced tripartite framework enabling departments, innovators, and independent evaluators to collaborate without compromising diligence.</p>
+      </div>
+      <div class="grid3 reveal reveal-delay-2">
+        <div class="card" style="padding:24px;border-top:4px solid var(--navy);">
+          <div style="font-size:28px;margin-bottom:12px;">🏛️</div>
+          <h3 style="font-size:18px;margin-bottom:8px;color:var(--navy);">For Government</h3>
+          <p style="font-size:13px;line-height:1.6;color:var(--slate);margin-bottom:14px;">Convert operational problems into outcome-based challenges. De-risk procurement through controlled pilots before making long-term commitments.</p>
+          <ul style="font-size:12px;color:var(--ink-soft);padding-left:16px;line-height:1.7;">
+            <li>Define outcome KPIs rather than rigid vendor specs</li>
+            <li>Evaluate startups with explainable scoring rubrics</li>
+            <li>Retain final human authority over procurement decisions</li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding:24px;border-top:4px solid var(--saffron);">
+          <div style="font-size:28px;margin-bottom:12px;">🚀</div>
+          <h3 style="font-size:18px;margin-bottom:8px;color:var(--saffron-dark);">For Startups</h3>
+          <p style="font-size:13px;line-height:1.6;color:var(--slate);margin-bottom:14px;">Access public sector demand without 3-year turnover barriers. Prove technological efficacy in paid, real-world deployment sandboxes.</p>
+          <ul style="font-size:12px;color:var(--ink-soft);padding-left:16px;line-height:1.7;">
+            <li>Discover demand matched to your technical capability</li>
+            <li>Receive milestone-based payments upon verified delivery</li>
+            <li>Earn portable pilot evidence valid across departments</li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding:24px;border-top:4px solid var(--emerald);">
+          <div style="font-size:28px;margin-bottom:12px;">🔬</div>
+          <h3 style="font-size:18px;margin-bottom:8px;color:var(--emerald);">For Evaluators</h3>
+          <p style="font-size:13px;line-height:1.6;color:var(--slate);margin-bottom:14px;">Conduct structured technical assessments and independent telemetry verification with mandatory conflict-of-interest declarations.</p>
+          <ul style="font-size:12px;color:var(--ink-soft);padding-left:16px;line-height:1.7;">
+            <li>Blind scoring matrix across technical &amp; security pillars</li>
+            <li>Audit raw sensor logs and field reports independently</li>
+            <li>Issue objective recommendations, not commercial sign-offs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ONE CONTINUOUS EVIDENCE TRAIL ══ -->
+    <section class="wrap" style="padding:10px 0 40px;">
+      <div style="background:linear-gradient(135deg, rgba(11,31,58,0.03) 0%, rgba(255,107,53,0.04) 100%);border:1px solid var(--line);border-radius:18px;padding:28px;">
+        <div style="text-align:center;max-width:700px;margin:0 auto 24px;">
+          <div class="kicker-pill">Unbroken Audit Lineage</div>
+          <h3 style="font-size:20px;color:var(--navy);">One Continuous Evidence Trail</h3>
+          <p style="font-size:13.5px;color:var(--slate);margin-top:4px;">NIRMAN replaces paper promises with an unbroken chain of verifiable custody across every stage.</p>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:12px 18px;background:var(--paper);border-radius:12px;border:1px solid var(--border);font-size:12px;font-weight:700;color:var(--navy);">
+          <span>Challenge</span>
+          <span style="color:var(--slate);">→</span>
+          <span>Startup Match</span>
+          <span style="color:var(--slate);">→</span>
+          <span>Eligibility Audit</span>
+          <span style="color:var(--slate);">→</span>
+          <span>Jury Scoring</span>
+          <span style="color:var(--slate);">→</span>
+          <span>Pilot Milestone</span>
+          <span style="color:var(--slate);">→</span>
+          <span>Target vs Actual</span>
+          <span style="color:var(--slate);">→</span>
+          <span>Independent Validation</span>
+          <span style="color:var(--slate);">→</span>
+          <span>Official Decision</span>
+        </div>
+      </div>
+    </section>
+
 
     <!-- ══ COMPARE SECTION ══ -->
     <section class="wrap">
@@ -2538,76 +2687,50 @@
     </section>
 
     <!-- ══ TESTIMONIALS CAROUSEL (HUMANIZED WITH SPECIFIC ODD DETAILS) ══ -->
-    <section class="testimonials">
+    <!-- ══ PROTOTYPE FEEDBACK & DESIGN SIMULATION ══ -->
+    <section class="testimonials" style="background:#0B1F3A;">
       <div class="wrap">
-        <div class="kicker-pill" style="background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.4);">Field Observations</div>
+        <div class="kicker-pill" style="background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.4);">Stakeholder Alignment Simulation</div>
         <div class="sec-head">
-          <h2 style="color:#fff;">Notes from ground pilots</h2>
-          <p style="color:#8E9FB8;">Firsthand accounts from nodal officials, empanelled lab auditors, and startup founders on the ground.</p>
+          <h2 style="color:#fff;">Prototype Feedback Simulation</h2>
+          <p style="color:#8E9FB8;">Simulated field observations illustrating how NIRMAN addresses core friction points across the public procurement lifecycle.</p>
         </div>
         <div class="testi-track" id="testiTrack">
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">"Our biggest headache in Haidergarh PHC wasn't the solar power cuts; it was that the old loggers required a technician with a laptop every Tuesday. AarambhX's cellular loggers sent SMS alerts directly to the cold-chain handler's personal phone at 3:14 AM when the compressor tripped, saving ₹3.4L worth of pentavalent vials."</p>
+            <div style="font-size:11px;font-weight:700;color:var(--saffron);text-transform:uppercase;margin-bottom:8px;">Operational User Need · Government Department</div>
+            <p class="testi-quote">"Legacy tender specifications forced us to specify hardware models rather than cold-chain integrity. In this simulated pilot workflow, defining the outcome as 'wastage &lt; 5%' allowed the department to evaluate innovative cellular loggers directly against verified performance."</p>
             <div class="testi-author">
-              <img src="avatar_sharma.jpg" class="testi-avatar-img" alt="Dr. K. S. Rathore">
+              <div class="testi-avatar-img" style="display:flex;align-items:center;justify-content:center;background:#1E293B;color:#fff;font-weight:700;border-radius:50%;width:44px;height:44px;">🏛️</div>
               <div>
-                <div class="name">Dr. K. S. Rathore</div>
-                <div class="role">Chief Medical Officer · District Barabanki, UP</div>
+                <div class="name">Health Services Official (Simulated Persona)</div>
+                <div class="role">District Health Directorate · User Scenario</div>
               </div>
             </div>
           </div>
+
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">"We were rejected from 3 state tenders because our incorporation certificate was only 14 months old. NIRMAN's GFR 173(i) waiver got our 12 loggers into Barabanki PHCs in three weeks. When the STQC validator verified 3.8% wastage against the 18.4% baseline, that audit became our statewide passport."</p>
+            <div style="font-size:11px;font-weight:700;color:var(--saffron);text-transform:uppercase;margin-bottom:8px;">Startup Procurement Experience</div>
+            <p class="testi-quote">"As an early-stage DPIIT startup, 3-year turnover criteria normally disqualify us before technical evaluation. A structured sandbox framework with milestone-based disbursement provides a pathway to prove technology directly on the ground."</p>
             <div class="testi-author">
-              <img src="avatar_ananya.jpg" class="testi-avatar-img" alt="Ananya Krishnan">
+              <div class="testi-avatar-img" style="display:flex;align-items:center;justify-content:center;background:#1E293B;color:#fff;font-weight:700;border-radius:50%;width:44px;height:44px;">🚀</div>
               <div>
-                <div class="name">Ananya Krishnan</div>
-                <div class="role">Co-Founder · AarambhX Technologies (DIPP98412)</div>
+                <div class="name">Health-Tech Innovator (Simulated Persona)</div>
+                <div class="role">AarambhX Technologies · Founder Persona</div>
               </div>
             </div>
           </div>
+
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">"The Problem Statement Doctor stripped out a brand-specific wireless protocol requirement that an earlier vendor had snuck into our draft. Replacing it with an open 15-minute soil moisture threshold opened the challenge to 4 Indian sensor startups we'd never heard of."</p>
+            <div style="font-size:11px;font-weight:700;color:var(--saffron);text-transform:uppercase;margin-bottom:8px;">Independent Validation Perspective</div>
+            <p class="testi-quote">"Public procurement requires objective verification before public funds release. Separating validation into an independent step with raw telemetry audits gives departments evidence-based confidence without conflict of interest."</p>
             <div class="testi-author">
-              <img src="avatar_priya.jpg" class="testi-avatar-img" alt="Priya Menon">
+              <div class="testi-avatar-img" style="display:flex;align-items:center;justify-content:center;background:#1E293B;color:#fff;font-weight:700;border-radius:50%;width:44px;height:44px;">🔬</div>
               <div>
-                <div class="name">Priya Menon</div>
-                <div class="role">Joint Director · Punjab Agriculture Dept.</div>
+                <div class="name">Independent Technical Auditor (Simulated Persona)</div>
+                <div class="role">Domain Expert / Testing Lab Persona</div>
               </div>
             </div>
           </div>
-          <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">"Most startups hand us self-declared CSV files. In the NIRMAN validation flow, the raw SHA-256 telemetry dump was hashed at device origin. We spent three days doing spot physical checks with calibrated Fluke thermometers across 4 PHCs in Unnao; sensor variance was within ±0.2°C."</p>
-            <div class="testi-author">
-              <img src="avatar_vikram.jpg" class="testi-avatar-img" alt="Prof. Dr. M. Sundaram">
-              <div>
-                <div class="name">Prof. Dr. M. Sundaram</div>
-                <div class="role">Lead Auditor · IIT Delhi &amp; STQC Directorate (VAL-9042)</div>
-              </div>
-            </div>
-          </div>
-          <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
-            <p class="testi-quote">"Under standard municipal tenders, we were rejected 4 times because we didn't have 3 years of audited balance sheets. NIRMAN let us deploy 14 ultrasonic depth probes in Varanasi Ward 12 under GFR 173(i). When the monsoon surge hit, our sensors flagged the sewer backflow 48 minutes before flooding. That proof got us empanelled."</p>
-            <div class="testi-author">
-              <div class="testi-avatar" style="background:linear-gradient(135deg,#EC4899,#F9A8D4);">S</div>
-              <div>
-                <div class="name">Sanya Mirchandani</div>
-                <div class="role">Co-Founder · JalDrishti AI (Water &amp; Sanitation)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="testi-dots">
-          <div class="testi-dot active" onclick="scrollTesti(0)" id="dot-0"></div>
-          <div class="testi-dot" onclick="scrollTesti(1)" id="dot-1"></div>
-          <div class="testi-dot" onclick="scrollTesti(2)" id="dot-2"></div>
-          <div class="testi-dot" onclick="scrollTesti(3)" id="dot-3"></div>
-          <div class="testi-dot" onclick="scrollTesti(4)" id="dot-4"></div>
         </div>
       </div>
     </section>
@@ -2685,6 +2808,41 @@
     </section>
 
     <!-- ══ FULL CTA SECTION ══ -->
+    <!-- ══ FROM PROBLEM TO PROOF SUMMARY ══ -->
+    <section class="wrap" style="padding:40px 0 20px;">
+      <div style="text-align:center;max-width:760px;margin:0 auto 30px;">
+        <div class="kicker-pill">Executive Summary</div>
+        <h2 style="font-size:26px;color:var(--navy);">From Problem to Proof</h2>
+        <p style="font-size:14px;color:var(--slate);">How NIRMAN solves the core conundrum of public innovation procurement.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:16px;margin-bottom:30px;">
+        <div class="card" style="padding:18px;">
+          <div style="font-size:11px;font-weight:700;color:var(--slate);text-transform:uppercase;">Input</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin:4px 0;">Government Problem</div>
+          <div style="font-size:12px;color:var(--slate);">Operational friction identified in the field (e.g. cold-chain vaccine wastage).</div>
+        </div>
+        <div class="card" style="padding:18px;">
+          <div style="font-size:11px;font-weight:700;color:var(--saffron);text-transform:uppercase;">Formulation</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin:4px 0;">Outcome Challenge</div>
+          <div style="font-size:12px;color:var(--slate);">De-spec’d into measurable target KPIs with GFR 173(i) turnover waiver.</div>
+        </div>
+        <div class="card" style="padding:18px;">
+          <div style="font-size:11px;font-weight:700;color:var(--emerald);text-transform:uppercase;">Execution</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin:4px 0;">Controlled Pilot</div>
+          <div style="font-size:12px;color:var(--slate);">6-week field sandbox across 12 PHCs with milestone-released payments.</div>
+        </div>
+        <div class="card" style="padding:18px;">
+          <div style="font-size:11px;font-weight:700;color:var(--navy-3);text-transform:uppercase;">Resolution</div>
+          <div style="font-weight:700;font-size:14px;color:var(--navy);margin:4px 0;">Scale-Up Decision</div>
+          <div style="font-size:12px;color:var(--slate);">Independent telemetry validation supporting evidence-based scale orders.</div>
+        </div>
+      </div>
+      <div style="text-align:center;padding:18px;background:var(--paper);border-radius:12px;border:1px solid var(--border);font-size:13px;color:var(--ink-soft);max-width:800px;margin:0 auto 40px;">
+        <b>NIRMAN · From Innovation to Impact</b><br>
+        <span style="font-size:11.5px;color:var(--slate);">Team AarambhX · Smart India Hackathon 2026 · Problem Statement 26136</span>
+      </div>
+    </section>
+
     <section class="cta-section reveal">
       <div class="dot-grid"></div>
       <div class="hero-orb hero-orb-1"></div>
@@ -3028,7 +3186,19 @@
 
           <div class="panel">
             <h3 style="font-size:18px;margin-bottom:4px;">Score Active Applicant: <span style="color:var(--saffron);" id="lblActiveApplicant">AarambhX Technologies</span></h3>
-            <p style="font-size:12.5px;color:var(--slate);margin-bottom:12px;">Evaluator: Dr. R. Menon (Empanelled Health Systems Specialist)</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:8px 12px;background:var(--paper);border-radius:8px;border:1px solid var(--border);margin-bottom:14px;">
+              <div>
+                <span style="font-size:12px;color:var(--navy);font-weight:700;">Evaluator: Dr. R. Menon</span>
+                <span style="font-size:11px;color:var(--slate);display:block;">Role: Empanelled Health Systems Specialist</span>
+              </div>
+              <div id="coiStatusBadge" style="display:flex;align-items:center;gap:8px;">
+                <span class="badge-tag ok" style="font-size:10.5px;">✓ No Conflict Declared</span>
+                <button class="btn btn-outline btn-sm" onclick="declareConflict()" style="font-size:10px;padding:2px 8px;color:var(--crimson);border-color:rgba(225,29,72,0.3);">Declare Conflict</button>
+              </div>
+            </div>
+            <div id="coiAlertNotice" style="display:none;background:#FFF1F2;border:1px solid #FECDD3;color:#9F1239;padding:10px;border-radius:8px;font-size:12px;margin-bottom:12px;">
+              ⚠️ <b>Evaluation Access Restricted:</b> Conflict of interest recorded. Scoring privileges suspended pending reassignment by nodal coordinator.
+            </div>
 
             <div class="field">
               <label>Select Applicant Entity to Evaluate</label>
@@ -3347,6 +3517,9 @@
         <!-- RIGHT: Formal letterhead document -->
         <div id="govtOrderDocWrap" style="display:none;">
           <div class="govt-order-document" id="govtOrderDoc">
+            <div style="background:#FFF1F2;border:1px solid #FECDD3;color:#9F1239;padding:8px 14px;border-radius:6px;font-size:11px;font-weight:700;text-align:center;margin-bottom:14px;letter-spacing:0.04em;">
+              ⚠️ SIMULATED / ILLUSTRATIVE DOCUMENT — FOR DEMONSTRATION PURPOSES ONLY · NOT AN OFFICIAL GOVERNMENT ORDER
+            </div>
             <div class="govt-order-header">
               <div class="govt-emblem-seal">&#x1F3DB;&#xFE0F;</div>
               <div style="font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;">Government of India</div>
@@ -3404,11 +3577,14 @@
       </div>
 
       <div class="passport-container">
-        <div class="passport-header">
+        <div style="background:rgba(255,255,255,0.08);border:1px dashed rgba(255,255,255,0.2);padding:6px 12px;border-radius:8px;margin-bottom:14px;text-align:center;font-size:11px;color:#FCA5A5;">
+            DEMO EVIDENCE RECORD · PROTOTYPE CONCEPT (Subject to departmental validation &amp; procurement rules)
+          </div>
+          <div class="passport-header">
           <div>
-            <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#FF9E7A;font-weight:700;">Government of India · Sandbox Credential</div>
+            <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#FF9E7A;font-weight:700;">DEMO EVIDENCE RECORD · PROTOTYPE CONCEPT</div>
             <h3 style="font-size:24px;color:#fff;margin:4px 0;">AarambhX</h3>
-            <div style="font-size:12px;color:#A3B5D0;">Health-tech · DPIIT #DIPP98412 · GFR 173(i) Certified</div>
+            <div style="font-size:12px;color:#A3B5D0;">Health-tech · DPIIT #DIPP98412 · Demonstration Pilot Record</div>
           </div>
           <div class="passport-qr">
             <div style="width:100%;height:100%;background:conic-gradient(#000 25%,#fff 0 50%,#000 0 75%,#fff 0);background-size:10px 10px;border-radius:4px;"></div>
@@ -3456,6 +3632,193 @@
   </div>
 
   <!-- MOBILE BOTTOM NAVIGATION (Quick touch actions) -->
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       VIEW: PS TRACEABILITY (HOW NIRMAN ADDRESSES PS26136)
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <div class="view" id="v-traceability">
+    <section class="wrap">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:24px;">
+        <div>
+          <div class="kicker-pill">SIH 2026 Problem Statement 26136 Alignment</div>
+          <h2>PS Traceability &amp; Verification Matrix</h2>
+          <p style="color:var(--slate);font-size:14.5px;">Detailed mapping of every requirement specified in PS26136 to its corresponding implemented NIRMAN workflow module.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="startJudgeTour()">Run 3-Minute Judge Tour →</button>
+      </div>
+
+      <div class="panel" style="margin-bottom:24px;border-left:4px solid var(--saffron);">
+        <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;">Problem Statement Title:</div>
+        <p style="font-size:13.5px;color:var(--ink-soft);margin:0 0 10px 0;">"Startup friendly public procurement mechanism that enables government departments to identify, pilot, procure, and scale innovative solutions from eligible startups."</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--slate);">
+          <span><b>Ministry/Org:</b> Smart India Hackathon 2026</span>
+          <span>•</span>
+          <span><b>Team:</b> AarambhX</span>
+          <span>•</span>
+          <span><b>Prototype Status:</b> Fully Navigable 9-Stage Demo</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 style="font-size:17px;margin-bottom:14px;">Requirement Traceability Matrix</h3>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:28%;">PS26136 Requirement</th>
+                <th style="width:24%;">NIRMAN Implemented Module</th>
+                <th style="width:36%;">Implementation &amp; Governance Mechanism</th>
+                <th style="width:12%;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>1. Challenge Identification</b><br><span style="font-size:11px;color:var(--slate);">Convert operational needs into open challenges</span></td>
+                <td><span class="badge-tag ok">Stage 1: Challenge Studio</span></td>
+                <td style="font-size:12px;">Problem Statement Doctor rewrites vendor-biased input specs into objective, outcome-based KPIs with risk tiering.</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('studio')">Open →</button></td>
+              </tr>
+              <tr>
+                <td><b>2. Startup Discovery</b><br><span style="font-size:11px;color:var(--slate);">Transparent discovery without legacy barriers</span></td>
+                <td><span class="badge-tag ok">Stage 2: Discovery</span></td>
+                <td style="font-size:12px;">Explainable Match Scoring across 5 capability dimensions; includes forward demand visibility for future requirements.</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('discovery')">Open →</button></td>
+              </tr>
+              <tr>
+                <td><b>3. Eligibility Screening</b><br><span style="font-size:11px;color:var(--slate);">Pre-evaluation compliance checklist</span></td>
+                <td><span class="badge-tag ok">Stage 3: Screening</span></td>
+                <td style="font-size:12px;">Automated 4-point verification checking DPIIT recognition, GFR 173(i) turnover waiver eligibility, CPPP debarment, and mandatory docs.</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('screening')">Open →</button></td>
+              </tr>
+              <tr>
+                <td><b>4. Expert Evaluation</b><br><span style="font-size:11px;color:var(--slate);">Transparent consensus assessment</span></td>
+                <td><span class="badge-tag ok">Stage 4: Evaluation</span></td>
+                <td style="font-size:12px;">Weighted blind jury rubric across Technical Feasibility (30%), Scalability (25%), Security (25%), and Cost (20%) with Conflict Declaration.</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('evaluate')">Open →</button></td>
+              </tr>
+              <tr>
+                <td><b>5. Controlled Pilot Sandbox</b><br><span style="font-size:11px;color:var(--slate);">De-risked field trial before procurement</span></td>
+                <td><span class="badge-tag ok">Stage 5: Pilot &amp; Escrow</span></td>
+                <td style="font-size:12px;">Structured 4-milestone workspace with evidence uploads, role-based reviews, and conditional payment release workflow.</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('pilot')">Open →</button></td>
+              </tr>
+              <tr>
+                <td><b>6. Performance Measurement</b><br><span style="font-size:11px;color:var(--slate);">Telemetry &amp; target vs actual tracking</span></td>
+                <td><span class="badge-tag ok">Stage 6: Measurement</span></td>
+                <td style="font-size:12px;">Real-time Baseline vs Contractual Target vs Actual Telemetry comparisons with verified sparklines and audit logs.</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('measurement')">Open →</button></td>
+              </tr>
+              <tr>
+                <td><b>7. Independent Validation</b><br><span style="font-size:11px;color:var(--slate);">3rd-party evidence verification</span></td>
+                <td><span class="badge-tag ok">Stage 7: Validation</span></td>
+                <td style="font-size:12px;">Independent technical audit verifying raw data integrity, field baseline, and generating non-commercial recommendations.</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('validation')">Open →</button></td>
+              </tr>
+              <tr>
+                <td><b>8. Procurement Decision</b><br><span style="font-size:11px;color:var(--slate);">Authorized administrative order</span></td>
+                <td><span class="badge-tag ok">Stage 8: Decision Center</span></td>
+                <td style="font-size:12px;">Administrative record generation linking pilot evidence to procurement pathways (subject to departmental approval).</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('decision')">Open →</button></td>
+              </tr>
+              <tr>
+                <td><b>9. Scale-Up &amp; Inter-State Adoption</b><br><span style="font-size:11px;color:var(--slate);">Reuse verified evidence across government</span></td>
+                <td><span class="badge-tag ok">Stage 9: Passport &amp; Scaleup</span></td>
+                <td style="font-size:12px;">Portable demonstration evidence record enabling peer departments to assess validated solutions without redundant trials.</td>
+                <td><button class="btn btn-outline btn-sm" onclick="go('passport')">Open →</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       VIEW: ARCHITECTURE & GOVERNANCE STACK
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <div class="view" id="v-architecture">
+    <section class="wrap">
+      <div class="kicker-pill">System Architecture</div>
+      <div class="sec-head">
+        <h2>NIRMAN Architecture &amp; Governance Stack</h2>
+        <p>A multi-layered digital public infrastructure model designed for transparent public innovation procurement.</p>
+      </div>
+
+      <div class="grid3" style="margin-bottom:24px;">
+        <div class="panel" style="border-top:4px solid var(--navy);">
+          <div style="font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;">1. Presentation Layer</div>
+          <h4 style="margin:6px 0 10px;font-size:15px;">Role-Specific Portals</h4>
+          <p style="font-size:12.5px;color:var(--slate);line-height:1.6;">Separated operational views for Government Department Officials, DPIIT Startups, and Independent Evaluators/Validators.</p>
+          <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+            <span class="badge-tag info" style="font-size:10px;">Gov Nodal Portal</span>
+            <span class="badge-tag ok" style="font-size:10px;">Startup Portal</span>
+            <span class="badge-tag gov" style="font-size:10px;">Jury / Validator</span>
+          </div>
+        </div>
+
+        <div class="panel" style="border-top:4px solid var(--saffron);">
+          <div style="font-size:11px;font-weight:700;color:var(--saffron-dark);text-transform:uppercase;">2. Workflow Engine</div>
+          <h4 style="margin:6px 0 10px;font-size:15px;">Controlled Sandbox Pipeline</h4>
+          <p style="font-size:12.5px;color:var(--slate);line-height:1.6;">9-stage state machine enforcing sequential compliance gates from challenge definition through to scale-up assessment.</p>
+          <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+            <span class="badge-tag ok" style="font-size:10px;">Problem Doctor</span>
+            <span class="badge-tag ok" style="font-size:10px;">Match Radar</span>
+            <span class="badge-tag ok" style="font-size:10px;">Milestone Tracker</span>
+          </div>
+        </div>
+
+        <div class="panel" style="border-top:4px solid var(--emerald);">
+          <div style="font-size:11px;font-weight:700;color:var(--emerald);text-transform:uppercase;">3. Evidence &amp; Audit Layer</div>
+          <h4 style="margin:6px 0 10px;font-size:15px;">Tamper-Resistant Lineage</h4>
+          <p style="font-size:12.5px;color:var(--slate);line-height:1.6;">Cryptographic reference hashing, immutable audit trail logging, and independent validator credential binding.</p>
+          <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:4px;">
+            <span class="badge-tag info" style="font-size:10px;">Telemetry Hashes</span>
+            <span class="badge-tag info" style="font-size:10px;">Audit Log</span>
+            <span class="badge-tag info" style="font-size:10px;">Passport Record</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-bottom:24px;">
+        <h3 style="font-size:17px;margin-bottom:12px;">Integration &amp; Technical Boundaries (Prototype vs Production)</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>System Dimension</th>
+              <th>Current Prototype Implementation</th>
+              <th>Planned Production Architecture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>DPIIT Startup India</b></td>
+              <td>Simulated validation of DIPP certificates against predefined schema rules.</td>
+              <td>Direct API integration via OpenForge / API Setu with DPIIT OAuth2 verification.</td>
+            </tr>
+            <tr>
+              <td><b>Public Procurement (GeM / CPPP)</b></td>
+              <td>Demonstration alignment with GFR 173(i) waivers and PAC catalog formats.</td>
+              <td>Standardized GeM API integration for direct catalog publication post-pilot validation.</td>
+            </tr>
+            <tr>
+              <td><b>Payment &amp; Escrow</b></td>
+              <td>Simulated milestone authorization and release trigger workflow.</td>
+              <td>PFMS integration or RBI-regulated escrow account with smart milestone conditions.</td>
+            </tr>
+            <tr>
+              <td><b>Third-Party Validation</b></td>
+              <td>Empanelled domain validator review workflow with cryptographic reference tags.</td>
+              <td>PKI digital signature integration via eSign / USB token (MeitY Certifying Authorities).</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:14px;font-size:12px;color:var(--slate);font-style:italic;">
+          Note: This prototype demonstrates the procedural and technical workflow. Production deployment requires authorized agency agreements and departmental approvals.
+        </div>
+      </div>
+    </section>
+  </div>
+
   <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Quick mobile navigation" style="display:none;">
     <button class="mb-nav-btn active" data-v="home" id="mb-home" onclick="go('home')">
       <span class="mb-icon">🏠</span>
@@ -3827,6 +4190,50 @@
     </div>
   </div>
 
+  
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       JUDGE DEMO 3-MINUTE GUIDED TOUR MODAL
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="judgeTourModal" onclick="if(event.target===this)closeJudgeTour()">
+    <div class="modal-card" style="max-width:620px;">
+      <div class="modal-header">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:var(--saffron);text-transform:uppercase;letter-spacing:0.06em;">SIH 2026 PS26136 Presentation Mode</div>
+          <h3 style="font-size:18px;margin-top:2px;">3-Minute Structured Judge Walkthrough</h3>
+          <p style="font-size:12px;color:var(--slate);">Step-by-step navigation of the complete Government → Startup → Evidence → Scale-Up Journey.</p>
+        </div>
+        <button class="modal-close" onclick="closeJudgeTour()">×</button>
+      </div>
+      <div class="modal-body">
+        <div style="background:var(--paper);border-left:4px solid var(--navy);padding:12px 16px;border-radius:0 8px 8px 0;margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <b id="tourStepBadge" style="font-size:12px;color:var(--saffron-dark);">Step 1 of 8: Operational Problem Definition</b>
+            <span style="font-size:11px;color:var(--slate);" id="tourTimeEst">00:00 - 00:25</span>
+          </div>
+          <h4 id="tourStepTitle" style="margin:4px 0 6px;font-size:15px;color:var(--navy);">Challenge Studio &amp; Problem Doctor</h4>
+          <p id="tourStepDesc" style="font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin:0;">
+            Government departments convert vague problems into measurable, outcome-based innovation challenges without vendor lock-in.
+          </p>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:12px;">
+          <div style="font-weight:700;color:var(--navy);margin-bottom:4px;">Core Narrative Pitch:</div>
+          <div id="tourStepPitch" style="color:var(--slate);font-style:italic;line-height:1.5;">
+            "NIRMAN does not replace government procurement rules. It creates the verifiable evidence trail that helps departments make better-informed procurement and scale-up decisions."
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <button class="btn btn-ghost btn-sm" id="btnTourPrev" onclick="prevTourStep()" disabled>← Previous</button>
+          <div style="display:flex;gap:6px;">
+            <button class="btn btn-outline btn-sm" onclick="jumpToCurrentTourScreen()">Navigate to Stage View</button>
+            <button class="btn btn-primary btn-sm" id="btnTourNext" onclick="nextTourStep()">Next Step →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="toast-container" id="toastContainer"></div>
 
   <!-- FOOTER -->
@@ -3856,6 +4263,8 @@
           <a href="#" onclick="go('decision');return false;">Scale Decision</a>
           <a href="#" onclick="go('passport');return false;">Passport</a>
           <a href="#" onclick="go('scaleup');return false;">Marketplace</a>
+          <a href="#" onclick="go('traceability');return false;" style="color:var(--saffron);font-weight:600;">PS26136 Traceability</a>
+          <a href="#" onclick="go('architecture');return false;">System Architecture</a>
         </div>
         <div class="footer-col">
           <h5>Policy &amp; Legal</h5>
@@ -3865,9 +4274,15 @@
           <a href="#" onclick="document.getElementById('rubricModal').classList.add('active');return false;">Evaluation Rubric (Template 2)</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <div>© 2026 NIRMAN · Public Procurement Innovation Sandbox · India</div>
-        <div style="color:#64748B;font-size:12px;">Problem Statement 26136 Compliant Build</div>
+      <div class="footer-bottom" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div>© 2026 NIRMAN · Proposed Public Innovation Procurement Sandbox · SIH 2026 Team AarambhX</div>
+          <div style="color:#64748B;font-size:11.5px;margin-top:2px;">Problem Statement 26136 · From Innovation to Impact · Demonstrating Evidence-Based Procurement</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <button class="btn btn-outline btn-sm" onclick="startJudgeTour()" style="font-size:11px;padding:4px 10px;border-color:rgba(255,107,53,0.4);color:var(--saffron);">⚖️ 3-Min Judge Demo</button>
+          <button class="btn btn-ghost btn-sm" onclick="resetDemoData()" style="font-size:11px;padding:4px 10px;color:var(--slate);border:1px solid rgba(255,255,255,0.15);">🔄 Reset Demo State</button>
+        </div>
       </div>
     </div>
   </footer>
@@ -3882,7 +4297,7 @@
     const allViews = [
       'home', 'gov-dashboard', 'studio', 'discovery', 'screening',
       'evaluate', 'pilot', 'measurement', 'validation', 'decision',
-      'passport', 'scaleup'
+      'passport', 'scaleup', 'traceability', 'architecture'
     ];
 
     const authProfiles = {
@@ -4644,6 +5059,134 @@
     });
 
     
+    
+    /* ═══════════════════════════════════════════════════════════════════════════
+       JUDGE DEMO 3-MINUTE GUIDED WALKTHROUGH LOGIC
+       ═══════════════════════════════════════════════════════════════════════════ */
+    let currentTourStep = 0;
+    const judgeTourSteps = [
+      {
+        stage: 'studio',
+        step: '1 of 8: Problem Formulation',
+        time: '00:00 - 00:25',
+        title: 'Challenge Studio & Problem Statement Doctor',
+        desc: 'Government departments convert vague operational complaints into structured outcome KPIs with risk classification, avoiding restrictive vendor specs.',
+        pitch: '"Government departments often know the problem they need solved, but not which startup can solve it. The Problem Doctor converts operational needs into objective KPIs."'
+      },
+      {
+        stage: 'discovery',
+        step: '2 of 8: Startup Discovery',
+        time: '00:25 - 00:50',
+        title: 'Explainable Discovery & Matching Radar',
+        desc: 'Startups discover challenges without 3-year turnover barriers. Explainable match scores evaluate capability, domain fit, and pilot readiness.',
+        pitch: '"AI assists with explainable scoring across technical and domain fit, but human officials retain final shortlisting authority."'
+      },
+      {
+        stage: 'screening',
+        step: '3 of 8: Eligibility Screening',
+        time: '00:50 - 01:15',
+        title: 'Statutory Screening Gate (GFR 173(i))',
+        desc: 'Automated 4-point compliance check validates DPIIT certificate, applies GFR 173(i) turnover waiver, scans CPPP debarment, and checks mandatory disclosures.',
+        pitch: '"DPIIT recognized startups clear statutory eligibility with zero prior turnover barriers under GFR Rule 173(i)."'
+      },
+      {
+        stage: 'evaluate',
+        step: '4 of 8: Expert Evaluation',
+        time: '01:15 - 01:40',
+        title: 'Consensus Scoring & Conflict-of-Interest',
+        desc: 'Empanelled domain jury evaluates applicants across 4 weighted pillars with mandatory Conflict of Interest declaration and access controls.',
+        pitch: '"Jury members must explicitly declare no conflict of interest before submitting scores, ensuring complete procedural probity."'
+      },
+      {
+        stage: 'pilot',
+        step: '5 of 8: Controlled Sandbox Pilot',
+        time: '01:40 - 02:05',
+        title: 'Live Pilot Workspace & Milestone Payment Workflow',
+        desc: 'Selected startup executes a 6-week field pilot. Funds release conditionally across 4 predefined milestones only upon verified telemetry proof.',
+        pitch: '"Public funds are de-risked: payments release strictly on milestone verification rather than upfront lump-sum advances."'
+      },
+      {
+        stage: 'measurement',
+        step: '6 of 8: Performance Measurement',
+        time: '02:05 - 02:25',
+        title: 'Target vs Actual Telemetry Dashboard',
+        desc: 'Real-time telemetry tracking compares field data against contractual targets (e.g., vaccine cold-chain wastage dropped from 18.4% baseline to 3.8%).',
+        pitch: '"Measurable outcomes: contractual targets are audited live against actual field sensor telemetry with complete audit lineage."'
+      },
+      {
+        stage: 'validation',
+        step: '7 of 8: Independent Validation',
+        time: '02:25 - 02:45',
+        title: 'Third-Party Technical Validation (STQC / Domain Auditor)',
+        desc: 'Independent accredited auditor inspects raw telemetry logs, conducts field baseline checks, and issues formal verification recommendations.',
+        pitch: '"Validation is an independent process, not an automatic guarantee, providing unbiased technical evidence to the department."'
+      },
+      {
+        stage: 'decision',
+        step: '8 of 8: Administrative Decision & Scale',
+        time: '02:45 - 03:00',
+        title: 'Scale-Up Decision Record & Portable Passport',
+        desc: 'Competent departmental authority signs an administrative order based on audited evidence. The verified record becomes a portable national passport.',
+        pitch: '"NIRMAN does not replace government procurement rules. It creates the evidence trail that helps departments make better-informed procurement and scale-up decisions."'
+      }
+    ];
+
+    function startJudgeTour() {
+      currentTourStep = 0;
+      updateTourStepUI();
+      document.getElementById('judgeTourModal').classList.add('active');
+    }
+
+    function closeJudgeTour() {
+      document.getElementById('judgeTourModal').classList.remove('active');
+    }
+
+    function updateTourStepUI() {
+      const s = judgeTourSteps[currentTourStep];
+      document.getElementById('tourStepBadge').textContent = s.step;
+      document.getElementById('tourTimeEst').textContent = s.time;
+      document.getElementById('tourStepTitle').textContent = s.title;
+      document.getElementById('tourStepDesc').textContent = s.desc;
+      document.getElementById('tourStepPitch').textContent = s.pitch;
+      document.getElementById('btnTourPrev').disabled = currentTourStep === 0;
+      document.getElementById('btnTourNext').textContent = currentTourStep === judgeTourSteps.length - 1 ? 'Finish Tour' : 'Next Step →';
+    }
+
+    function nextTourStep() {
+      if (currentTourStep < judgeTourSteps.length - 1) {
+        currentTourStep++;
+        updateTourStepUI();
+        jumpToCurrentTourScreen();
+      } else {
+        closeJudgeTour();
+        showToast('🏆 3-Minute Judge Demo Tour complete! Exploring PS Traceability Matrix.', 'success');
+        go('traceability');
+      }
+    }
+
+    function prevTourStep() {
+      if (currentTourStep > 0) {
+        currentTourStep--;
+        updateTourStepUI();
+        jumpToCurrentTourScreen();
+      }
+    }
+
+    function jumpToCurrentTourScreen() {
+      const s = judgeTourSteps[currentTourStep];
+      go(s.stage);
+    }
+
+    function declareConflict() {
+      const badge = document.getElementById('coiStatusBadge');
+      const notice = document.getElementById('coiAlertNotice');
+      if (badge && notice) {
+        badge.innerHTML = '<span class="badge-tag bad" style="font-size:10.5px;">⚠️ Conflict Declared</span>';
+        notice.style.display = 'block';
+        showToast('Conflict of interest recorded. Evaluation access suspended.', 'warning');
+      }
+    }
+
     function resetDemoData() {
       if (confirm('Reset NIRMAN demo data back to clean factory state?')) {
         localStorage.removeItem('nirman_user_profile');
